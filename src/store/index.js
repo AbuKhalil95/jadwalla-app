@@ -1,6 +1,7 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import auth from './auth';
 import schedule from './schedule';
 import dashboard from './dashboard';
