@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import SignIn from '../Auth/Signin';
 import SignUp from '../Auth/Signup';
+import MyWall from '../Wall/my-wall';
 
 function Main() {
     return (
@@ -19,7 +20,9 @@ function Main() {
                 </Route>
 
                 <Route exact path="/my-wall">
+                    <MyWall />
                 </Route>
+
                 <Route path="/wall/">
                 </Route>
                 <Route exact path="/chat">
