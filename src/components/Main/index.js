@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import SignIn from '../Auth/Signin';
 import SignUp from '../Auth/Signup';
+import Dashboard from '../Dashboard/Dashboard';
 
 function Main() {
     return (
@@ -16,6 +17,10 @@ function Main() {
 
                 <Route exact path="/signup">
                     <SignUp />
+                </Route>
+
+                <Route exact path="/dashboard">
+                    <Dashboard />
                 </Route>
 
                 <Route exact path="/my-wall">
