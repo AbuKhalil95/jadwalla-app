@@ -49,18 +49,6 @@ const Dashboard = props => {
         })};
       </ul>
 
-      {/* {props.data.map((course, i) => {
-        return (
-          
-          <div key={i}>
-            <h2>name {course.name}</h2>
-            <h3>hours {course.hours}</h3>
-            <h3>spent hours{course.spentHours}</h3>
-            <h3>progress{course.progress}</h3>
-          </div>
-        );
-      })}; */}
-
     </>
   );
 };
