@@ -5,7 +5,6 @@ import axios from 'axios';
 import base64 from 'base-64';
 import cookie from 'js-cookie';
 
-
 const initialState = {
   userId: '',
   username: '',

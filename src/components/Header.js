@@ -2,11 +2,8 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { getDash } from '../store/dashboard';
 
-
-function Header(props) {
+function Header() {
   return (
     <div className="App">
       <Link to="/dashboard">
@@ -23,11 +20,5 @@ function Header(props) {
 };
 
 
-const mapStateToProps = state => ({
-  user: state.auth.userId,
-  token: state.auth.token
-});
 
-const mapDispatchToProps = { getDash };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;
