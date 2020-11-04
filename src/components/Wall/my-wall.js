@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import postsGetter from '../../hooks/wall/wallGetter'
 import Badge from 'react-bootstrap/Badge';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Card from 'react-bootstrap/Card';
-import Image from 'react-bootstrap/Image';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
@@ -12,12 +12,7 @@ import QRCode from 'qrcode.react';
 
 
 const MyWall = props => {
-    const posts = [{ text: "hello world", time: "9:00" }, { text: "hello Ahmad", time: "9:00" }, { text: "hello Osama", time: "9:00" }, { text: "hello Yahya", time: "9:00" }]
-    const [newPosts, setNewPost] = useState([{ text: "hello world", time: "9:00" }, { text: "hello Ahmad", time: "9:00" }, { text: "hello Osama", time: "9:00" }, { text: "hello Yahya", time: "9:00" }])
-    const sharedUrl = 'www.habrawi.com';
-    const activateTyping = true;
-
-
+    const { posts, newPosts, activateTyping, sharedUrl } = postsGetter();
     return (
         <>
             <Container fluid="true" style={{ margin: "20px 100px" }} >
