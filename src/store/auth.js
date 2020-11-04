@@ -39,7 +39,6 @@ export default (state = initialState, action) => {
   }
 };
 
-
 export const handleSignUp = e => {
   return async dispatch => {
     let res = await axios.post(`https://jadwalla.herokuapp.com/api/v1/signup`, e);
@@ -59,6 +58,7 @@ export const handleSignIn = e => {
     cache: 'no-cache',
     headers: { 'Authorization': `Basic ${encodedData}` },
   };
+  
   return async dispatch => {
     let res = await axios.post(`https://jadwalla.herokuapp.com/api/v1/signin`, e, options);
     console.log(res)
