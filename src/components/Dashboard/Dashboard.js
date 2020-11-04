@@ -3,16 +3,55 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getDash } from '../../store/dashboard';
+import { Card } from "react-bootstrap";
+import './dashboard.scss';
 
 const Dashboard = props => {
+
   useEffect(() => {
     props.getDash();
   }, []);
 
+  const variant = [
+    'Primary',
+    'Secondary',
+    'Success',
+    'Danger',
+    'Warning',
+    'Info',
+    'Light',
+    'Dark',
+  ];
   return (
     <>
-      {props.data.map((course, i) => {
+      <ul className="list-container">
+        {props.data.map((course, idx) => {
+          return (
+            <Card
+              bg={variant[idx].toLowerCase()}
+              key={idx}
+              text={variant[idx].toLowerCase() === 'light' ? 'dark' : 'white'}
+              style={{ width: '18rem' }}
+              className="mb-2"
+            >
+              <Card.Header>{course.name.toUpperCase()}</Card.Header>
+              <Card.Body>
+                <Card.Title> PROGRESS : {course.progress} % </Card.Title>
+                <Card.Text>
+                  TOTAL HOURS : {course.hours}
+                </Card.Text>
+                <Card.Text>
+                  HOURS SPENT : {course.spentHours}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          );
+        })};
+      </ul>
+
+      {/* {props.data.map((course, i) => {
         return (
+          
           <div key={i}>
             <h2>name {course.name}</h2>
             <h3>hours {course.hours}</h3>
@@ -20,7 +59,7 @@ const Dashboard = props => {
             <h3>progress{course.progress}</h3>
           </div>
         );
-      })}
+      })}; */}
 
     </>
   );

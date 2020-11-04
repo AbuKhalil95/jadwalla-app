@@ -1,0 +1,13 @@
+@media all and (min-width: 480px) {
+
+    .mb-2{
+        padding: 20px;
+        margin: 10px;
+    }
+    .list-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+}

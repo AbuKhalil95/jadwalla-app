@@ -5,7 +5,7 @@ import axios from 'axios';
 import cookie from 'js-cookie';
 
 const initialState = {
-  statistics : {},
+  statistics : [],
 };
 
 export default (state = initialState, action) => {
