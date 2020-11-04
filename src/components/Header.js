@@ -1,3 +1,22 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-anonymous-default-export */
+
+// function Header() {
+//   return (
+//     <div className="App">
+//       <Link to="/dashboard">
+//         dashboard
+//       </Link> <br/>
+//       <Link to="/signup">
+//         sign up
+//       </Link> <br/>
+//       <Link to="/signin">
+//         sign in
+//       </Link>
+//     </div>
+//   );
+// };
+
 
 import React from "react";
 import { connect } from 'react-redux'
@@ -70,7 +89,7 @@ const Header = (props) => {
             <IconButton color="inherit" aria-label="Logout" component={Link} to={'/cart'}>
               <LockIcon/>
             </IconButton>) : (
-               <IconButton color="inherit" aria-label="Login" component={Link} to={'/cart'}>
+               <IconButton color="inherit" aria-label="Login" component={Link} to={'/signin'}>
                <LockOpenIcon/>
              </IconButton>
             )}

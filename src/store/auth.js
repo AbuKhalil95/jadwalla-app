@@ -3,7 +3,7 @@
 /* eslint-disable no-case-declarations */
 import axios from 'axios';
 import base64 from 'base-64';
-import cookie from 'react-cookies';
+import cookie from 'js-cookie';
 
 const initialState = {
   userId: '',
@@ -62,7 +62,8 @@ export const handleSignIn = e => {
   return async dispatch => {
     let res = await axios.post(`https://jadwalla.herokuapp.com/api/v1/signin`, e, options);
     console.log(res)
-    cookie.save('auth', res.data.token);
+    cookie.set('auth', res.data.token, { expires: 1 });
+    cookie.set('userId', res.data.user._id, { expires: 1 });
     dispatch({
       type: 'SET_SIGNIN',
       payload: res.data,
