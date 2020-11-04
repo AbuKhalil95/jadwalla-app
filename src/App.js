@@ -1,18 +1,18 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import MyWall from './components/Wall/my-wall';
-import { Provider } from 'react-redux';
-import store from './store/';
-import Header from './components/Header'
+import { BrowserRouter } from 'react-router-dom';
+import Header from './components/Header';
+import Main from './components/Main/index';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <>
-      <Header />
-      <Provider store={store}>
-        <MyWall />
-      </Provider>
-    </>
+    <div className="App">
+      <BrowserRouter>
+        <Header />
+        <Main />
+        <Footer />
+      </BrowserRouter>
+    </div>
   );
 }
 
