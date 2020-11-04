@@ -2,12 +2,18 @@
 /* eslint-disable import/no-anonymous-default-export */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Nav,Navbar} from 'react-bootstrap';
+// import { Link } from 'react-router-dom';
 
 function Header() {
     return (
-      <div className="App">
-      </div>
+      <>
+        <Navbar bg="primary" variant="dark">
+          <Nav className="mr-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+          </Nav>
+        </Navbar>
+      </>
     );
   };
 
