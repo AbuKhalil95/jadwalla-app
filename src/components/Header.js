@@ -18,7 +18,7 @@
 // };
 
 
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Link, withRouter } from "react-router-dom";
 
@@ -56,11 +56,13 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = (props) => {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
+  const [auth, setAuth] = React.useState(props.auth.username);
 
-  const handleLogin = (event) => {
-    setAuth(!auth);
-  };
+
+  useEffect(() => {
+    console.log('changing auth')
+    setAuth(props.auth.username ? true : false);
+  }, [props.auth.username, auth])
 
   return (
     <header className={classes.root}>
@@ -84,9 +86,9 @@ const Header = (props) => {
             </>
           )}
           </div>
-          <div onClick={handleLogin}>
+          <div>
             {auth ? (
-            <IconButton color="inherit" aria-label="Logout" component={Link} to={'/cart'}>
+            <IconButton color="inherit" aria-label="Logout" component={Link} to={'/'}>
               <LockIcon/>
             </IconButton>) : (
                <IconButton color="inherit" aria-label="Login" component={Link} to={'/signin'}>
@@ -101,7 +103,7 @@ const Header = (props) => {
 }
 
 const mapStateToProps = state => ({
-  cart: state.cart
+  auth: state.auth,
 })
 
 export default withRouter(connect(mapStateToProps)(Header)); 
