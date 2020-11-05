@@ -1,73 +1,53 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Chat, Channel, ChannelList, Window } from 'stream-chat-react';
-import { ChannelHeader, MessageList } from 'stream-chat-react';
-import { MessageInput, Thread } from 'stream-chat-react';
-import { StreamChat } from 'stream-chat';
 
-import 'stream-chat-react/dist/css/index.css';
 
-const chatClient = new StreamChat('gx5a64bj4ptz');
-const userToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoic3dlZXQtZHJlYW0tNSJ9.xd1GiJNI_tTckyuSKDcbGltH8hnT1JlCe3LLNGvd44Q';
+const MyChat = props => {
+    let room = 'math'
+    let users = ['ahmad', 'osama']
+    let oldMassages = [{ username: 'ahmad', time: '9:00', text: 'hello' }]
+    let newMessages = [{ username: 'osama', time: '8:00', text: 'hi' }]
 
-// custom channel preview component
-class MyChannelPreview extends React.Component {
-    render() {
-        const { setActiveChannel, channel } = this.props;
-        const unreadCount = channel.countUnread();
+    return (
 
-        return (
-            <div className="channel_preview">
-                <a href="#" onClick={(e) => setActiveChannel(channel, e)}>
-                    {channel.data.name}
-                </a>
-
-                <span>
-                    Unread messages: {unreadCount}
-                </span>
+        <div>
+            <div>
+                Room: {room}
             </div>
-        );
-    }
-}
+            {oldMassages.map((detail, index) => {
+                return (
+                    <div>
+                        <span>{detail.username}</span>
+                        <span>{detail.time}</span>
+                        <span>{detail.text}</span>
+                    </div>
+                )
+            })}
+            {newMessages.map((detail, index) => {
+                return (
+                    <div>
+                        <span>{detail.username}</span>
+                        <span>{detail.time}</span>
+                        <span>{detail.text}</span>
+                    </div>
+                )
+            })}
+            <div>
+                <h1>Users</h1>
+                {users.map((detail, index) => {
+                    return (
+                        <p>{detail}</p>
+                    )
+                })}
+            </div>
+            <form>
+                <input type="text"></input>
+                <button type="submit">submit</button>
+            </form>
+        </div>
+    )
 
-// a very minimalistic message component
-class MyMessageComponent extends React.Component {
-    render() {
-        return <div><b>{this.props.message.user.name}</b> {this.props.message.text}</div>;
-    }
-}
-
-chatClient.setUser(
-    {
-        id: 'sweet-dream-5',
-        name: 'Sweet dream',
-        image: 'https://getstream.io/random_png/?id=sweet-dream-5&name=Sweet+dream'
-    },
-    userToken,
-);
-
-const filters = { type: 'messaging', members: { $in: ['sweet-dream-5'] } };
-const sort = { last_message_at: -1 };
-const channels = chatClient.queryChannels(filters, sort);
-
-const MyChat = props => (
-
-    <Chat client={chatClient} theme={'messaging light'}>
-        <ChannelList
-            filters={filters}
-            sort={sort}
-            Preview={MyChannelPreview}
-        />
-        <Channel Message={MyMessageComponent}>
-            <Window>
-                <ChannelHeader />
-                <MessageList />
-                <MessageInput />
-            </Window>
-            <Thread />
-        </Channel>
-    </Chat>
-);
+};
 
 const mapStateToProps = state => ({
 });
