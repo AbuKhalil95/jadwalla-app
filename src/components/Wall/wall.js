@@ -1,24 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import socketClient from 'socket.io-client';
+import Content from './wall-content';
 import { connect } from 'react-redux';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-
-
 
 const Wall = props => {
-    const isSent = false;
-
+    const [socket, setSocket] = useState(socketClient);
+    useEffect(() => {
+        socket.close();
+        setSocket(socketClient('http://localhost:3001/wall/give-support'));
+        return () => {
+            socket.close();
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     return (
         <>
-            { isSent ? <p>your messege is sent</p> :
-                <Form>
-                    <Form.Group controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Leave Honest Words</Form.Label>
-                        <Form.Control as="textarea" rows={3} />
-                    </Form.Group>
-                    <Button variant="primary" type="submit" >Submit</Button>
-                </Form>
-            }
+            <Content socket={socket} />
         </>
     )
 }
