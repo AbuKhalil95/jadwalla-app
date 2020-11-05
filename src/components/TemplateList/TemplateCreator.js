@@ -102,7 +102,7 @@ console.log(props);
                                 </Button>              
                             </Modal.Footer>
                         </Modal>
-
+                        <h3>Add some courses</h3>
                 <Button onClick={handleShow}>ADD A COURSE</Button>
 
 

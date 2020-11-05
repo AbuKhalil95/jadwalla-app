@@ -25,10 +25,6 @@ let sciSchedule = {
     ],
 };
 
-const createTemplate = async () => {
-
-}
-
 const getSciTemplate = async () => {
     let token = cookie.get('auth');
     const options = {
