@@ -8,9 +8,10 @@ import dashboard from './dashboard';
 import chat from './chat';
 import notifications from './notifications';
 import session from './session';
+import template from './template';
 
 
-let reducers = combineReducers({auth, schedule, dashboard, chat, notifications, session});
+let reducers = combineReducers({auth, schedule, dashboard, chat, notifications, session, template});
 
 const store = () => {
   return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
