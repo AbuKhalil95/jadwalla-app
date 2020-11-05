@@ -43,7 +43,7 @@ export const handleSignUp = e => {
   return async dispatch => {
     let res = await axios.post(`https://jadwalla.herokuapp.com/api/v1/signup`, e);
     console.log(res)
-    cookie.save('auth', res.data.token);
+    cookie.set('auth', res.data.token);
     dispatch({
       type: 'SET_SIGNUP',
       payload: res.data,
