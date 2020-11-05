@@ -25,16 +25,10 @@ let sciSchedule = {
     ],
 };
 
-// {
-//     date: new Date().toString(),
-//     topics: [
-//         {
-//             name: 'Motion and forces',
-//             totalHours: 1,
-//             completed: 0,
-//         },
-//     ],
-// },
+const createTemplate = async () => {
+
+}
+
 const getSciTemplate = async () => {
     let token = cookie.get('auth');
     const options = {
@@ -81,7 +75,18 @@ export const customizedTemplate = async (template) => {
         cache: 'no-cache',
         headers: { 'Authorization': `Bearer ${token}` },
     };
+    console.log(template)
     let res = await axios.post(`https://jadwalla.herokuapp.com/api/v1/template`, template, options);
     console.log(res);
 };
 
+// {
+//     date: new Date().toString(),
+//     topics: [
+//         {
+//             name: 'Motion and forces',
+//             totalHours: 1,
+//             completed: 0,
+//         },
+//     ],
+// },

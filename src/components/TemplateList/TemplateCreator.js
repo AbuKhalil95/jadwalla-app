@@ -5,6 +5,8 @@ import { handleCourse, handleChapter, setTemp } from '../../store/template';
 import { Button, FormGroup, FormControl, FormLabel, Modal, Form } from "react-bootstrap";
 import AddCourse from './AddCourse';
 import AddChapter from './AddChapter';
+import {customizedTemplate} from './createTemplate';
+import { Label } from '@material-ui/icons';
 
 
 const TemplateCreator = props => {
@@ -39,20 +41,27 @@ console.log(props);
         e.preventDefault();
         const chapter = {
             name: e.target.name.value,
-            duration: e.target.duration.value,
-            state: 'not studied',
+            duration: Number(e.target.duration.value),
+            state: 'not-studied',
         };
         props.handleChapter(idx, chapter);
         handleCloseCh();
       };
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        const tempName = {
-            templateName: e.target.tempName.value,
-        };
-        props.setTemp(tempName);
+        e.preventDefault();  
+        props.setTemp(e.target.tempName.value);
     };
+
+    const createTemplate = (e) => {
+        let template = {
+            name: props.name,
+            courses: props.courses,
+            owner_id: props.owner_id,
+        }
+        console.log(template);
+        customizedTemplate(template);
+    }
 
     return (
         <>
@@ -67,6 +76,7 @@ console.log(props);
                         placeholder="TEMPLATE NAME"
                     />
                 </FormGroup>
+                <Button type="submit">SET NAME</Button>
             </Form>
 
                 {props.courses.map( (course, i) => {
@@ -74,8 +84,6 @@ console.log(props);
                         <div key={i}>
                         <h5>{course.name}</h5>
                         <Button onClick={()=>handleShowCh(i)}>Add Chapter</Button>
-
-                        
                         </div>
                     );
                 })}
@@ -113,6 +121,9 @@ console.log(props);
                     </Modal.Footer>
                 </Modal>
                 
+                <br/>
+                <h3>Are you ready?!</h3>
+                <Button onClick={createTemplate}>CREATE THE NEW TEMPLATE</Button>
 
         </>
     );
@@ -120,7 +131,8 @@ console.log(props);
 
 const mapStateToProps = state => ({
     name: state.template.name,
-    courses: state.template.courses,   
+    courses: state.template.courses,
+    owner_id: state.template.owner_id,
 });
 
 const mapDispatchToProps = { setTemp, handleCourse, handleChapter };
