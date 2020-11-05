@@ -4,6 +4,8 @@ import SignIn from '../Auth/Signin';
 import SignUp from '../Auth/Signup';
 import MyWall from '../Wall/my-wall';
 import Wall from '../Wall/wall';
+import Chat from '../Chat/Chat';
+import MyChat from '../Chat/subject-chat';
 
 function Main() {
     return (
@@ -28,7 +30,12 @@ function Main() {
                     <Wall />
                 </Route>
                 <Route exact path="/chat">
+                    <Chat />
                 </Route>
+                <Route exact path="/myChat">
+                    <MyChat />
+                </Route>
+
                 <Route>404 Page Not Found!</Route>
             </Switch>
         </main>
