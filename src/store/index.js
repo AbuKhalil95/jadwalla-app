@@ -7,9 +7,10 @@ import schedule from './schedule';
 import dashboard from './dashboard';
 import chat from './chat';
 import notifications from './notifications';
+import session from './session';
 
 
-let reducers = combineReducers({auth, schedule, dashboard, chat, notifications});
+let reducers = combineReducers({auth, schedule, dashboard, chat, notifications, session});
 
 const store = () => {
   return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));

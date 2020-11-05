@@ -103,7 +103,7 @@ const Header = (props) => {
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
 })
 
 export default withRouter(connect(mapStateToProps)(Header)); 
