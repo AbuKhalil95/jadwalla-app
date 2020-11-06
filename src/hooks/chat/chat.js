@@ -1,17 +1,14 @@
 import { useState, useEffect } from 'react';
+const username = 'Osama';
 const Chat = (socket) => {
     const [roomName, setRoomName] = useState('');
     const [msg, setMsg] = useState('');
     const [usersNames, setUsersNames] = useState([]);
     const [oldMessages, setOldMessages] = useState([]);
     const [newMessages, setNewMessages] = useState([]);
-    // var socket = io('/chatRoom');
 
     useEffect(() => {
-        // http://localhost:3001/chatRoom?room=Math
         const room = window.location.href.split('?')[1].split('=')[1].toLowerCase();
-        // const room = 'Math';
-        const username = 'Osama';
         socket.emit('joinRoom', { room, username });
         socket.on('history', messages => {
             let oldMsgArr = messages.map(val => {
@@ -22,13 +19,18 @@ const Chat = (socket) => {
     }, [socket]);
     socket.on('roomUsers', ({ room, users }) => {
         roomName !== '' && setRoomName(room);
-        setUsersNames([...users]);
+        console.log(users)
+        let usersArr = users.map(val => val.username);
+        usersArr = usersArr.filter(val => username !== val);
+        setUsersNames([...usersArr]);
     });
     socket.on('message', message => {
 
         setNewMessages([...newMessages, outputMessage(message)])
     });
     const _handleSubmit = (e) => {
+        e.preventDefault();
+        e.target.reset();
         if (msg !== '') {
             socket.emit('chatMessage', msg);
         }
