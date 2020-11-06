@@ -8,7 +8,7 @@ const WallGetter = (socket) => {
     useEffect(() => {
         //// You need to get the userId from store 
         let userId = '5f7c297b3994e4066c549646';
-        let link = 'http://localhost:3001/wall/give-support/' + userId;
+        let link = 'http://localhost:3000/wall/' + userId;
         setShearedUrl(link);
     }, []);
     useEffect(() => {

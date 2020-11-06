@@ -22,7 +22,7 @@ function Main() {
                     <SignUp />
                 </Route>
 
-                <Route exact path="/my-wall">
+                <Route exact path="/myWall">
                     <MyWall />
                 </Route>
 

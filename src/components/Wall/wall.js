@@ -7,7 +7,7 @@ const Wall = props => {
     const [socket, setSocket] = useState(socketClient);
     useEffect(() => {
         socket.close();
-        setSocket(socketClient('http://localhost:3001/wall/give-support'));
+        setSocket(socketClient('http://localhost:3001/wall'));
         return () => {
             socket.close();
         };

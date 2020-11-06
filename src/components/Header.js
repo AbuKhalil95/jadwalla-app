@@ -12,7 +12,7 @@ function Header() {
         <Nav className="mr-auto">
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/wall">Wall</Nav.Link>
-          <Nav.Link href="/my-wall">My Wall</Nav.Link>
+          <Nav.Link href="/myWall">My Wall</Nav.Link>
           <Nav.Link href="/myChat">My Chat</Nav.Link>
 
         </Nav>
