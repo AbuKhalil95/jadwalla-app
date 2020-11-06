@@ -1,23 +1,5 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-anonymous-default-export */
-
-// function Header() {
-//   return (
-//     <div className="App">
-//       <Link to="/dashboard">
-//         dashboard
-//       </Link> <br/>
-//       <Link to="/signup">
-//         sign up
-//       </Link> <br/>
-//       <Link to="/signin">
-//         sign in
-//       </Link>
-//     </div>
-//   );
-// };
-
-
 import React, { useEffect } from "react";
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Link, withRouter } from "react-router-dom";

@@ -4,6 +4,9 @@ import SignIn from '../Auth/Signin';
 import SignUp from '../Auth/Signup';
 import Dashboard from '../Dashboard/Dashboard';
 import Home from './home.js';
+import TemplateSelector from '../TemplateList/TemplateSelector';
+import TemplateCreator from '../TemplateList/TemplateCreator';
+
 
 //testing collection of all components
 // import Yahya from './components/yahya';
@@ -26,6 +29,14 @@ function Main() {
 
                 <Route exact path="/dashboard">
                     <Dashboard />
+                </Route>
+
+                <Route exact path="/select-template">
+                    <TemplateSelector />
+                </Route>
+
+                <Route exact path="/create-template">
+                    <TemplateCreator />
                 </Route>
 
                 <Route exact path="/my-wall">
