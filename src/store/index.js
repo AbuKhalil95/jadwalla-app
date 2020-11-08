@@ -14,6 +14,14 @@ import allTemplates from './allTemplates';
 
 let reducers = combineReducers({auth, history, dashboard, chat, notifications, session, template, allTemplates});
 
+const rootReducer = (state, action) => {
+  if (action.type === 'SET_LOGOUT') {
+    state = null;
+    window.location.href="/";
+  }
+  return reducers(state, action)
+}
+
 const store = () => {
   return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
 };
