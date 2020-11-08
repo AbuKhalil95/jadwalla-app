@@ -4,6 +4,8 @@ import SignIn from '../Auth/Signin';
 import SignUp from '../Auth/Signup';
 import Dashboard from '../Dashboard/Dashboard';
 import Home from './home.js';
+import TemplateCreator from '../TemplateList/TemplateCreator.js'
+import TemplateSelector from '../TemplateList/TemplateSelector.js'
 
 function Main() {
     return (
@@ -23,6 +25,14 @@ function Main() {
 
                 <Route exact path="/dashboard">
                     <Dashboard />
+                </Route>
+
+                <Route exact path="/create-template">
+                    <TemplateCreator />
+                </Route>
+
+                <Route exact path="/select-template">
+                    <TemplateSelector />
                 </Route>
                 
                 <Route exact path="/my-wall">
