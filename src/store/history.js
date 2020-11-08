@@ -23,8 +23,10 @@ export default (state = initialState, action) => {
 
   switch(type){
     case 'GET-HISTORY':
-      payload.startDate = newDate;
-      return payload;
+      if (payload) {
+        payload.startDate = newDate;
+        return payload;
+      }
 
     case 'TOGGLE-SESSION':
       console.log('Toggles session inside history',localStorage.getItem('session'));

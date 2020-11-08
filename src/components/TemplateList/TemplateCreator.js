@@ -10,6 +10,7 @@ import { Label } from '@material-ui/icons';
 
 
 const TemplateCreator = props => {
+    
 console.log(props);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -57,7 +58,7 @@ console.log(props);
         let template = {
             name: props.name,
             courses: props.courses,
-            owner_id: props.owner_id,
+            ownerId: props.ownerId,
         }
         console.log(template);
         customizedTemplate(template);
@@ -79,14 +80,14 @@ console.log(props);
                 <Button type="submit">SET NAME</Button>
             </Form>
 
-                {props.courses.map( (course, i) => {
+                {props.courses ? props.courses.map( (course, i) => {
                     return(
                         <div key={i}>
                         <h5>{course.name}</h5>
                         <Button onClick={()=>handleShowCh(i)}>Add Chapter</Button>
                         </div>
                     );
-                })}
+                }) : null}
                 <br/>
 
                 <Modal show={showCh} onHide={handleCloseCh} >
@@ -132,7 +133,7 @@ console.log(props);
 const mapStateToProps = state => ({
     name: state.template.name,
     courses: state.template.courses,
-    owner_id: state.template.owner_id,
+    ownerId: state.template.ownerId,
 });
 
 const mapDispatchToProps = { setTemp, handleCourse, handleChapter };

@@ -3,6 +3,10 @@ import { connect } from 'react-redux'
 import { Button, Select, MenuItem, FormControl, InputLabel, makeStyles } from '@material-ui/core';
 import { toggleSession } from '../../store/session';
 import { getHistory } from '../../store/history.js';
+import { getTemplates } from '../../store/allTemplates.js'
+
+import TemplateSelector from '../TemplateList/TemplateSelector';
+import TemplateCreator from '../TemplateList/TemplateCreator';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -18,6 +22,7 @@ const Home = props => {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(props.auth.username);
   const [lesson, setLesson] = React.useState('');
+  const [template, toggleTemplate] = React.useState(false);
 
   const handleToggle = () => {
     props.toggleSession("dummy");
@@ -27,18 +32,24 @@ const Home = props => {
     setLesson(event.target.value);
   };
 
+  const handleTemplate = () => {
+    toggleTemplate(!template)
+  }
+
   useEffect(() => {
     console.log('changing auth')
     setAuth(props.auth.username ? true : false);
     props.getHistory();
-  }, [props.auth.username, auth])
+    props.getTemplates();
+
+  }, [props.auth, auth, template])
 
 
   return (
     <>
       <div>This is a guide pre login {props.auth.username || 'non-logged'}</div>
       <div>This is guide shown only once after login {props.auth.username}</div>
-      <div>This is not a guide, but a homepage ? dashboard</div>
+      <div>This is not a guide, but a homepage to start / continue</div>
       {auth ? (
         <>
           <br/>
@@ -70,9 +81,19 @@ const Home = props => {
               })}
             </Select>
           </FormControl>
+
+          {template ? (<>
+            <TemplateSelector />
+          </>) : (<>
+            <TemplateCreator />
+          </>)}
+          <br/>
+          <Button onClick={handleTemplate}>
+          {template ? 'CREATE YOUR OWN TEMPLATE' : 'CHOOSE FROM OTHER TEMPLATES'}
+          </Button>
+          
         </>
-        ) : null}
-      
+        ) : null}      
     </>
   )
 }
@@ -83,6 +104,6 @@ const mapStateToProps = state => ({
   history: state.history,
 })
 
-const mapDispatchToProps = { toggleSession, getHistory };
+const mapDispatchToProps = { toggleSession, getHistory, getTemplates };
 
 export default (connect(mapStateToProps, mapDispatchToProps)(Home));
