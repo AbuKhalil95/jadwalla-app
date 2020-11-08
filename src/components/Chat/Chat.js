@@ -6,11 +6,9 @@ import Button from 'react-bootstrap/Button';
 
 
 const Chat = props => {
-
   return (
     <>
       <Form>
-
         <Form.Group controlId="exampleForm.ControlSelect1">
           <Form.Label>Chose the Subject Chat </Form.Label>
           <Form.Control as="select" custom>
@@ -22,9 +20,7 @@ const Chat = props => {
           </Form.Control>
         </Form.Group>
         <Button variant="primary" type="submit">Join Chat</Button>
-
       </Form>
-
     </>
   );
 };
