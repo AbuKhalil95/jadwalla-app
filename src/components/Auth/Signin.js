@@ -2,23 +2,32 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { handleSignIn } from '../../store/auth';
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col } from "react-bootstrap";
 import './auth.scss';
+import  { Redirect } from 'react-router-dom';
+import signUpImg from '../../images/signin-image.jpg';
+
 
 const Signin = props => {
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const signInValues = {
-      username: e.target.username.value,
-      password: e.target.password.value,
+      username: await e.target.username.value,
+      password: await e.target.password.value,
     };
-    props.handleSignIn(signInValues);
+    await props.handleSignIn(signInValues);
+    window.location.href="/";
   }
+
+  
   return (
     <>
-
-      <form onSubmit={handleSubmit}>
+    <Container>
+  <Row>
+    <Col>
+    <h1>Sign In</h1> <br/>
+    <form onSubmit={handleSubmit}>
         <FormGroup controlId="email" bsSize="large">
           <FormLabel>Email</FormLabel>
           <FormControl
@@ -39,6 +48,18 @@ const Signin = props => {
           Login
         </Button>
       </form>
+
+
+    </Col>
+    <Col>
+    <div class="signin-image">
+          <img src={signUpImg}  alt="sing in"/> <br/>
+          <a href="/signup" class="signin">Create an account</a>
+      </div>
+    </Col>
+  </Row>
+  
+</Container>
 
     </>
   );

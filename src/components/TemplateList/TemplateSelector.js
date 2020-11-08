@@ -3,17 +3,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
-
 import { chooseTemplate } from '../../store/template';
-
-import { createSciTemplate } from './createTemplate';
-import { createLitTemplate } from './createTemplate';
 import './templateSelector.scss';
 import { Card, Button } from "react-bootstrap";
 
 
-// let historyTemplate = chosenTemplate.toObject();      // cant create new mongoose entry before 
-//       chosenTemplate = await history.create(historyTemplate);
 const TemplateSelector = props => { 
 
   return (

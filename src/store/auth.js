@@ -6,9 +6,9 @@ import base64 from 'base-64';
 import cookie from 'js-cookie';
 
 const initialState = {
-  userId: '',
+  userId: cookie.get('userId') ? cookie.get('userId') : '',
   username: '',
-  token: '',
+  token: cookie.get('auth') ? cookie.get('auth') : '',
 };
 
 export default (state = initialState, action) => {
@@ -26,13 +26,6 @@ export default (state = initialState, action) => {
         userId: payload.user._id,
         username: payload.user.username,
         token: payload.token
-      };
-    case 'SET_LOGOUT':
-      return {
-        ...state,
-        userId: {},
-        username: {},
-        token: {}
       };
     default:
       return state;

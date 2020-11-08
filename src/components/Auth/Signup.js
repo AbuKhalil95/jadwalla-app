@@ -2,8 +2,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { handleSignUp } from '../../store/auth';
-import { Button, FormGroup, FormControl, FormLabel, FormCheck, Form } from "react-bootstrap";
+import { Button, FormGroup, FormControl, FormLabel, FormCheck, Form , Container, Row, Col } from "react-bootstrap";
 import './auth.scss';
+import signUpImg from '../../images/signup-image.jpg';
 
 
 const Signup = props => {
@@ -20,8 +21,11 @@ const Signup = props => {
 
   return (
     <>
-
-      <Form onSubmit={handleSubmit}>
+   <Container>
+  <Row>
+    <Col>
+    <h1>Sign Up</h1> <br/>
+    <Form onSubmit={handleSubmit}>
         <FormGroup controlId="username" bsSize="large">
           <FormLabel>Username</FormLabel>
           <FormControl
@@ -60,6 +64,20 @@ const Signup = props => {
           SignUp
         </Button>
       </Form>
+
+    </Col>
+    <Col>
+    <div class="signup-image">
+          <img src={signUpImg}  alt="sing up"/>  <br />
+          <a href="/signin" class="signup">I am already member</a>
+      </div>
+    
+    </Col>
+  </Row>
+  
+</Container>
+      
+     
 
     </>
   );
