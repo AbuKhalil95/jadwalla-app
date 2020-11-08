@@ -4,8 +4,9 @@ import SignIn from '../Auth/Signin';
 import SignUp from '../Auth/Signup';
 import Dashboard from '../Dashboard/Dashboard';
 import Home from './home.js';
-import TemplateCreator from '../TemplateList/TemplateCreator.js'
-import TemplateSelector from '../TemplateList/TemplateSelector.js'
+import TemplateCreator from '../TemplateList/TemplateCreator.js';
+import TemplateSelector from '../TemplateList/TemplateSelector.js';
+import Notifications from '../Notification/Notifications';
 
 function Main() {
     return (
@@ -33,6 +34,10 @@ function Main() {
 
                 <Route exact path="/select-template">
                     <TemplateSelector />
+                </Route>
+
+                <Route exact path="/Notifications">
+                    <Notifications />
                 </Route>
                 
                 <Route exact path="/my-wall">

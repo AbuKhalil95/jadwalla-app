@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { connect } from 'react-redux';
+import { SocialIcon } from 'react-social-icons';
 import { handleSignUp } from '../../store/auth';
 import { Button, FormGroup, FormControl, FormLabel, FormCheck, Form , Container, Row, Col } from "react-bootstrap";
 import './auth.scss';
@@ -63,6 +64,9 @@ const Signup = props => {
         <Button block bsSize="large" type="submit">
           SignUp
         </Button>
+        <br />
+        <a>Or sign Up using Gmail <SocialIcon network="google" style={{ height: 35, width: 35 }} /></a>
+
       </Form>
 
     </Col>
