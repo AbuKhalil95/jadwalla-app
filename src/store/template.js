@@ -6,7 +6,7 @@ import cookie from 'js-cookie';
 const initialState = {
     name: '',
     courses: [],
-    owner_id : cookie.get('userId'),
+    ownerId : cookie.get('userId'),
 
 };
 
