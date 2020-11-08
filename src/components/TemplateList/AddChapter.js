@@ -13,7 +13,7 @@ const AddChapter = props => {
                         autoFocus
                         type="text"
                         name="name"
-                        placeholder={(props.chapter && props.chapter.name) || "CHAPTER NAME"}
+                        defaultValue={(props.chapter && props.chapter.name) || "CHAPTER NAME"}
                     />
                 </FormGroup>
 
@@ -23,7 +23,7 @@ const AddChapter = props => {
                         autoFocus
                         type="number"
                         name="duration"
-                        placeholder={(props.chapter && props.chapter.name) || "DURATION"}
+                        defaultValue={(props.chapter && props.chapter.name) || "DURATION"}
                     />
                 </FormGroup>
 

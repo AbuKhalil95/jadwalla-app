@@ -4,6 +4,7 @@ import { Button, Select, MenuItem, FormControl, InputLabel, makeStyles } from '@
 import { toggleSession } from '../../store/session';
 import { getHistory } from '../../store/history.js';
 import { getTemplates } from '../../store/allTemplates.js'
+import { Link, withRouter } from "react-router-dom";
 
 import TemplateSelector from '../TemplateList/TemplateSelector';
 import TemplateCreator from '../TemplateList/TemplateCreator';
@@ -52,6 +53,12 @@ const Home = props => {
       <div>This is not a guide, but a homepage to start / continue</div>
       {auth ? (
         <>
+          <Link to='./create-template'>
+            <Button variant="contained" color="primary">CREATE YOUR OWN TEMPLATE</Button> 
+          </Link>
+          <Link to='./select-template'>
+            <Button variant="contained" color="primary">CHOOSE FROM OTHER TEMPLATES</Button> 
+          </Link>
           <br/>
           Started at {props.history.startDate}
           <br/>
@@ -82,16 +89,12 @@ const Home = props => {
             </Select>
           </FormControl>
 
-          {template ? (<>
+          {/* {template ? (<>
             <TemplateSelector />
           </>) : (<>
             <TemplateCreator />
           </>)}
-          <br/>
-          <Button onClick={handleTemplate}>
-          {template ? 'CREATE YOUR OWN TEMPLATE' : 'CHOOSE FROM OTHER TEMPLATES'}
-          </Button>
-          
+          <br/>*/}          
         </>
         ) : null}      
     </>
@@ -106,4 +109,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { toggleSession, getHistory, getTemplates };
 
-export default (connect(mapStateToProps, mapDispatchToProps)(Home));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));

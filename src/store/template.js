@@ -52,3 +52,7 @@ export const setTemp = name => {
         payload: name,
     };
 };
+
+export const chooseTemplate = template => {
+    
+}
