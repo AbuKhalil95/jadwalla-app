@@ -76,7 +76,6 @@ const Header = (props) => {
           )}
           </div>
           <div>
-            {console.log(auth)}
             {auth ? (
             <IconButton color="inherit" aria-label="Logout" component={Link} to={'/'} onClick={logOut}>
               <LockIcon />
