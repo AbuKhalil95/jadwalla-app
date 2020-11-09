@@ -7,7 +7,7 @@ const AddChapter = props => {
         <>
 
             <Form onSubmit={props.onSubmit} >
-                <FormGroup controlId="CHAPTERNAME" bsSize="large">
+                <FormGroup controlId="CHAPTERNAME" size="large">
                     <FormLabel>CHAPTER NAME</FormLabel>
                     <FormControl
                         autoFocus
@@ -17,7 +17,7 @@ const AddChapter = props => {
                     />
                 </FormGroup>
 
-                <FormGroup controlId="DURATION" bsSize="large">
+                <FormGroup controlId="DURATION" size="large">
                     <FormLabel>TIME NEEDED TO FINISH (hour)</FormLabel>
                     <FormControl
                         autoFocus

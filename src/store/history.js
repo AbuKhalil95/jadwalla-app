@@ -26,12 +26,13 @@ export default (state = initialState, action) => {
       if (payload) {
         payload.startDate = newDate;
         return payload;
+      } else {
+        return state;
       }
 
     case 'TOGGLE-SESSION':
       console.log('Toggles session inside history',localStorage.getItem('session'));
       return state;
-  
       
     default: 
       return state;
@@ -58,14 +59,14 @@ export const getHistory = e => {
   };
 };
 
-export const toggleSession = e => {
-  return async dispatch => {
-    console.log('data start session sending to history', e);
-    // let res = await axios.put(`https://jadwalla.herokuapp.com/api/v1/dashboard/${user_id}`, options);
-    // console.log(res)
-    dispatch({
-      type: 'TOGGLE-SESSION',
-      payload: e,
-    });
-  };
-};
+// export const toggleSession = e => {
+//   return async dispatch => {
+//     console.log('data start session sending to history', e);
+//     // let res = await axios.put(`https://jadwalla.herokuapp.com/api/v1/dashboard/${user_id}`, options);
+//     // console.log(res)
+//     dispatch({
+//       type: 'TOGGLE-SESSION',
+//       payload: e,
+//     });
+//   };
+// };
