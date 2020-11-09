@@ -1,18 +1,40 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import Timetable from './Timetable.js';
-
+import Calender from './Calender.js'
 import { Card } from "react-bootstrap";
 import './dashboard.scss';
 
 const Dashboard = props => {
+  const [sessions, setSessions] = useState([]);
 
+  const convertToSessions = (sessions) => {
+    console.log('All sessions in timetable', sessions);
+
+    if (sessions.length > 0) {
+      const modSessions = sessions.map((session, index) => {
+        let start = new Date(session.date);
+        let duration = new Date(session.time);
+        return {
+          id: index,
+          startDate: new Date(new Date(session.date).getTime()),
+          endDate: new Date(start.getTime() + duration.getTime()),
+          title: `${session.lessonId} \n  ${session.completed*100}% in ${session.time} seconds`,
+          location: 'Room 1',
+        }
+      });
+      
+      console.log('inserting into calendar', modSessions);
+      setSessions(modSessions);
+    }
+  }
+  
   useEffect(() => {
-
-  }, []);
+    convertToSessions(props.sessions);
+  }, [props.sessions]);
 
   const variant = [
     'Primary',
@@ -26,7 +48,8 @@ const Dashboard = props => {
   ];
   return (
     <>
-      <Timetable/>
+      <Calender data={sessions}/>
+      {/* <Timetable/> */}
       <ul className="list-container">
         {props.data.map((course, idx) => {
           return (
