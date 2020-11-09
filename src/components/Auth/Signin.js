@@ -6,7 +6,7 @@ import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col } from "
 import './auth.scss';
 import  { Redirect } from 'react-router-dom';
 import signUpImg from '../../images/signin-image.jpg';
-
+import { Link, withRouter } from "react-router-dom";
 
 const Signin = props => {
 
@@ -28,7 +28,7 @@ const Signin = props => {
     <Col>
     <h1>Sign In</h1> <br/>
     <form onSubmit={handleSubmit}>
-        <FormGroup controlId="email" bsSize="large">
+        <FormGroup controlId="email" size="large">
           <FormLabel>Email</FormLabel>
           <FormControl
             autoFocus
@@ -37,14 +37,14 @@ const Signin = props => {
             placeholder="Username"
           />
         </FormGroup>
-        <FormGroup controlId="password" bsSize="large">
+        <FormGroup controlId="password" size="large">
           <FormLabel>Password</FormLabel>
           <FormControl
             type="password"
             name="password" placeholder="Password"
           />
         </FormGroup>
-        <Button block bsSize="large" type="submit">
+        <Button block size="large" type="submit">
           Login
         </Button>
       </form>
@@ -52,9 +52,9 @@ const Signin = props => {
 
     </Col>
     <Col>
-    <div class="signin-image">
+    <div className="signin-image">
           <img src={signUpImg}  alt="sing in"/> <br/>
-          <a href="/signup" class="signin">Create an account</a>
+          <Link to='./signup' className="signin">Create an account</Link>
       </div>
     </Col>
   </Row>

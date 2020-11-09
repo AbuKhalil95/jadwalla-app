@@ -2,14 +2,16 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getDash } from '../../store/dashboard';
+
+import Timetable from './Timetable.js';
+
 import { Card } from "react-bootstrap";
 import './dashboard.scss';
 
 const Dashboard = props => {
 
   useEffect(() => {
-    props.getDash();
+
   }, []);
 
   const variant = [
@@ -24,6 +26,7 @@ const Dashboard = props => {
   ];
   return (
     <>
+      <Timetable/>
       <ul className="list-container">
         {props.data.map((course, idx) => {
           return (
@@ -54,9 +57,8 @@ const Dashboard = props => {
 };
 
 const mapStateToProps = state => ({
-  data: state.dashboard.statistics
+  data: state.dashboard.statistics,
+  sessions: state.allSessions,
 });
 
-const mapDispatchToProps = { getDash };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps)(Dashboard);

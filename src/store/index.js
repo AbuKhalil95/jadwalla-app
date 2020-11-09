@@ -10,9 +10,10 @@ import notifications from './notifications';
 import session from './session';
 import template from './template';
 import allTemplates from './allTemplates';
+import allSessions from './allSessions';
 
 
-let reducers = combineReducers({auth, history, dashboard, chat, notifications, session, template, allTemplates});
+let reducers = combineReducers({auth, history, dashboard, chat, notifications, session, template, allTemplates, allSessions});
 
 const rootReducer = (state, action) => {
   if (action.type === 'SET_LOGOUT') {

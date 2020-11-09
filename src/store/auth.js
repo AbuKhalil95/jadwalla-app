@@ -7,7 +7,7 @@ import cookie from 'js-cookie';
 
 const initialState = {
   userId: cookie.get('userId') ? cookie.get('userId') : '',
-  username: '',
+  username: cookie.get('username') ? cookie.get('username') : '',
   token: cookie.get('auth') ? cookie.get('auth') : '',
 };
 
@@ -57,6 +57,8 @@ export const handleSignIn = e => {
     console.log(res)
     cookie.set('auth', res.data.token, { expires: 1 });
     cookie.set('userId', res.data.user._id, { expires: 1 });
+    cookie.set('username', res.data.user.username, { expires: 1 });
+
     dispatch({
       type: 'SET_SIGNIN',
       payload: res.data,

@@ -68,7 +68,7 @@ console.log(props);
         <>
 
             <Form onSubmit={handleSubmit}>
-                <FormGroup controlId="TEMPLATENAME" bsSize="large">
+                <FormGroup controlId="TEMPLATENAME" size="large">
                     <FormLabel>TEMPLATE NAME</FormLabel>
                     <FormControl
                         autoFocus
@@ -91,23 +91,21 @@ console.log(props);
                 <br/>
 
                 <Modal show={showCh} onHide={handleCloseCh} >
-                            <Modal.Header closeButton>
-                                <Modal.Title>Chapter Details</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>Add a new chapter: 
-                                <AddChapter onSubmit={onChapterSubmit}/>
-                            </Modal.Body>
-                            <Modal.Footer>
-                                <Button variant="secondary" onClick={handleCloseCh}>
-                                    Close
-                                </Button>              
-                            </Modal.Footer>
-                        </Modal>
-                        <h3>Add some courses</h3>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Chapter Details</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Add a new chapter: 
+                        <AddChapter onSubmit={onChapterSubmit}/>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleCloseCh}>
+                            Close
+                        </Button>              
+                    </Modal.Footer>
+                </Modal>
+
+                    <h3>Add some courses</h3>
                 <Button onClick={handleShow}>ADD A COURSE</Button>
-
-
-
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>Course Details</Modal.Title>

@@ -7,7 +7,7 @@ const AddCourse = props => {
         <>
 
             <Form onSubmit={props.onSubmit}>
-                <FormGroup controlId="COURSENAME" bsSize="large">
+                <FormGroup controlId="COURSENAME" size="large">
                     <FormLabel>COURSE NAME</FormLabel>
                     <FormControl
                         autoFocus
@@ -17,7 +17,7 @@ const AddCourse = props => {
                     />
                 </FormGroup>
 
-                <FormGroup controlId="HOURS" bsSize="large">
+                <FormGroup controlId="HOURS" size="large">
                     <FormLabel>TIME NEEDED TO FINISH(hour)</FormLabel>
                     <FormControl
                         autoFocus
@@ -27,7 +27,7 @@ const AddCourse = props => {
                     />
                 </FormGroup>
 
-                <FormGroup controlId="TEMPLATENAME" bsSize="large">
+                <FormGroup controlId="TEMPLATENAME" size="large">
                     <FormLabel>HOW MANY CHAPTERS?</FormLabel>
                     <FormControl
                         autoFocus
