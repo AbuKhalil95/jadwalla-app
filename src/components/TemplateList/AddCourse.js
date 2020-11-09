@@ -13,7 +13,7 @@ const AddCourse = props => {
                         autoFocus
                         type="text"
                         name="name"
-                        defaultValue={(props.course && props.course.name) || "COURSE NAME"}
+                        placeholder = "COURSE NAME"
                     />
                 </FormGroup>
 
@@ -23,7 +23,7 @@ const AddCourse = props => {
                         autoFocus
                         type="number"
                         name="expectedHours"
-                        defaultValue={(props.course && props.course.expectedHours) || "EXPECTED HOURS"}
+                        placeholder =" HOURS"
                     />
                 </FormGroup>
 
@@ -33,7 +33,7 @@ const AddCourse = props => {
                         autoFocus
                         type="number"
                         name="noOfChapters"
-                        defaultValue={(props.course && props.course.noOfChapters) || "Number of chapters"}
+                        placeholder = "Number of chapters"
                     />
                 </FormGroup>
 
