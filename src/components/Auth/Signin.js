@@ -6,6 +6,8 @@ import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col } from "
 import './auth.scss';
 import  { Redirect } from 'react-router-dom';
 import signUpImg from '../../images/signin-image.jpg';
+import { withSnackbar } from 'notistack';
+
 
 
 const Signin = props => {
@@ -19,6 +21,12 @@ const Signin = props => {
     await props.handleSignIn(signInValues);
     window.location.href="/";
   }
+  const handleClick = button => () => {
+    window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
+    props.enqueueSnackbar('Ready to start a new Learning Adventure?', { variant: 'info' });
+    props.enqueueSnackbar(button.message, { variant: button.variant });
+    
+};
 
   
   return (
@@ -44,9 +52,16 @@ const Signin = props => {
             name="password" placeholder="Password"
           />
         </FormGroup>
-        <Button block bsSize="large" type="submit">
+        <Button block bsSize="large" type="submit" onClick={handleClick({ variant: 'success', message: 'Welcome back' })}>
           Login
         </Button>
+        {/* <Button
+              key={'success'}
+              variant="contained"
+              onClick={handleClick({ variant: 'success', message: 'Successfully done the operation.' })}
+          >
+              success
+          </Button> */}
       </form>
 
 
@@ -55,6 +70,7 @@ const Signin = props => {
     <div class="signin-image">
           <img src={signUpImg}  alt="sing in"/> <br/>
           <a href="/signup" class="signin">Create an account</a>
+          
       </div>
     </Col>
   </Row>
@@ -71,4 +87,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { handleSignIn };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signin);
+export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(Signin));

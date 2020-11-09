@@ -2,11 +2,14 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { handleCourse, handleChapter, setTemp } from '../../store/template';
-import { Button, FormGroup, FormControl, FormLabel, Modal, Form } from "react-bootstrap";
+import { Button, FormGroup, FormControl, FormLabel, Modal, Form , Container, Row, Col} from "react-bootstrap";
 import AddCourse from './AddCourse';
 import AddChapter from './AddChapter';
 import {customizedTemplate} from './createTemplate';
 import { Label } from '@material-ui/icons';
+import Divider from '@material-ui/core/Divider';
+import { withSnackbar } from 'notistack';
+
 
 
 const TemplateCreator = props => {
@@ -61,6 +64,10 @@ console.log(props);
             ownerId: props.ownerId,
         }
         console.log(template);
+        if(props.name===''){
+            window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
+            props.enqueueSnackbar('You should fill all required fields', { variant: 'error' });
+        }
         customizedTemplate(template);
     }
 
@@ -75,6 +82,7 @@ console.log(props);
                         type="text"
                         name="tempName"
                         placeholder="TEMPLATE NAME"
+                        required
                     />
                 </FormGroup>
                 <Button type="submit">SET NAME</Button>
@@ -82,10 +90,19 @@ console.log(props);
 
                 {props.courses ? props.courses.map( (course, i) => {
                     return(
-                        <div key={i}>
-                        <h5>{course.name}</h5>
-                        <Button onClick={()=>handleShowCh(i)}>Add Chapter</Button>
-                        </div>
+                        <Container key={i}>
+                            <Row>
+                                <Col>
+                                <h5>{course.name}</h5>
+                                </Col>
+                                <Col>
+                                <Button onClick={()=>handleShowCh(i)}>Add Chapter</Button>
+                                </Col>
+                            </Row>
+                            <Divider light />
+                            <br />
+                        </Container>
+                        
                     );
                 }) : null}
                 <br/>
@@ -103,8 +120,8 @@ console.log(props);
                                 </Button>              
                             </Modal.Footer>
                         </Modal>
-                        <h3>Add some courses</h3>
-                <Button onClick={handleShow}>ADD A COURSE</Button>
+                        {/* <h3>Add some courses</h3> */}
+                <Button onClick={handleShow}>ADD A COURSE</Button> <br/>
 
 
 
@@ -123,7 +140,7 @@ console.log(props);
                 </Modal>
                 
                 <br/>
-                <h3>Are you ready?!</h3>
+                <h3>Are you ready?!</h3> <br/>
                 <Button onClick={createTemplate}>CREATE THE NEW TEMPLATE</Button>
 
         </>
@@ -138,4 +155,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { setTemp, handleCourse, handleChapter };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TemplateCreator);
+export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(TemplateCreator));

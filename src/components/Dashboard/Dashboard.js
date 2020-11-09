@@ -4,13 +4,25 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getDash } from '../../store/dashboard';
 import { Card } from "react-bootstrap";
+import { withSnackbar } from 'notistack';
 import './dashboard.scss';
 
 const Dashboard = props => {
-
-  useEffect(() => {
-    props.getDash();
+console.log(props)
+  useEffect(async() => {
+    await props.getDash();
+    
   }, []);
+
+
+  setTimeout(async () => {
+    if(props.total>0){
+      window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
+      props.enqueueSnackbar(`You have a total progress of ${props.total}`, { variant: 'info' });
+    }
+  }, 2000);
+    
+  
 
   const variant = [
     'Primary',
@@ -46,7 +58,7 @@ const Dashboard = props => {
               </Card.Body>
             </Card>
           );
-        })};
+        })}
       </ul>
 
     </>
@@ -54,9 +66,10 @@ const Dashboard = props => {
 };
 
 const mapStateToProps = state => ({
-  data: state.dashboard.statistics
+  data: state.dashboard.statistics,
+  total: state.dashboard.total,
 });
 
-const mapDispatchToProps = { getDash };
+const mapDispatchToProps = { getDash};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(Dashboard));
