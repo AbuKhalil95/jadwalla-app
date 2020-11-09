@@ -2,14 +2,16 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-
+import {getDash} from '../../store/dashboard';
 import Timetable from './Timetable.js';
 import Calender from './Calender.js'
 import { Card } from "react-bootstrap";
+import { withSnackbar } from 'notistack';
 import './dashboard.scss';
 
 const Dashboard = props => {
   const [sessions, setSessions] = useState([]);
+  const [count, setCount] = useState(0);
 
   const convertToSessions = (sessions) => {
     console.log('All sessions in timetable', sessions);
@@ -35,6 +37,24 @@ const Dashboard = props => {
   useEffect(() => {
     convertToSessions(props.sessions);
   }, [props.sessions]);
+  
+  useEffect(async() => {
+    await props.getDash();
+  }, []);
+
+  if(props.total>0 && count === 0){
+      const noti = setTimeout(async () => {
+      window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
+      await props.enqueueSnackbar(`Hey Champ, You have a total progress of ${props.total} %, Good Job!`, { variant: 'info' });
+    }, 4000);
+
+    setCount(1);
+
+    setTimeout(() => {
+      clearTimeout(noti);
+    },4500)
+    
+  }
 
   const variant = [
     'Primary',
@@ -72,7 +92,7 @@ const Dashboard = props => {
               </Card.Body>
             </Card>
           );
-        })};
+        })}
       </ul>
 
     </>
@@ -81,7 +101,9 @@ const Dashboard = props => {
 
 const mapStateToProps = state => ({
   data: state.dashboard.statistics,
-  sessions: state.allSessions,
+  total: state.dashboard.total,
 });
 
-export default connect(mapStateToProps)(Dashboard);
+const mapDispatchToProps = { getDash};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(Dashboard));
