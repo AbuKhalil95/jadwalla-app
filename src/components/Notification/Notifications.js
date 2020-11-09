@@ -1,36 +1,34 @@
 import React, { Component } from 'react';
-import clsx from 'clsx';
-import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import { withSnackbar } from 'notistack';
 
-const styles = {
-    root: {
-        flexGrow: 1,
-        display: 'flex',
-        margin: 16,
-        justifyContent: 'center',
-        alignItems: 'middle',
-    },
-    button: {
-        margin: 8,
-        color: '#fff',
-        backgroundColor: '#313131',
-    },
-    success: {
-        backgroundColor: '#43a047',
-    },
-    error: {
-        backgroundColor: '#d32f2f',
-    },
-    info: {
-        backgroundColor: '#2979ff',
-    },
-    warning: {
-        backgroundColor: '#ffa000',
-    },
-};
+// const styles = {
+//     root: {
+//         flexGrow: 1,
+//         display: 'flex',
+//         margin: 16,
+//         justifyContent: 'center',
+//         alignItems: 'middle',
+//     },
+//     button: {
+//         margin: 8,
+//         color: '#fff',
+//         backgroundColor: '#313131',
+//     },
+//     success: {
+//         backgroundColor: '#43a047',
+//     },
+//     error: {
+//         backgroundColor: '#d32f2f',
+//     },
+//     info: {
+//         backgroundColor: '#2979ff',
+//     },
+//     warning: {
+//         backgroundColor: '#ffa000',
+//     },
+// };
 
 const buttons = [
     { variant: 'success', message: 'Successfully done the operation.' },
@@ -40,41 +38,27 @@ const buttons = [
 ];
 
 
-class MessageButtons extends Component {
-    handleClick = button => () => {
-        window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
-        this.props.enqueueSnackbar(button.message, { variant: button.variant });
-    };
+class Notifications extends Component {
+    
 
-    handleClickWithAction = () => {
-        this.props.enqueueSnackbar('Customise this snackbar youself.', {
-            variant: 'default',
-            action: (
-                <Button color="secondary" size="small" onClick={() => alert('clicked on my custom action')}>
-                    My action
-                </Button>
-            ),
+    // handleClickWithAction = () => {
+    //     this.props.enqueueSnackbar('Customise this snackbar youself.', {
+    //         variant: 'default',
+    //         action: (
+    //             <Button color="secondary" size="small" onClick={() => alert('clicked on my custom action')}>
+    //                 My action
+    //             </Button>
+    //         ),
             
-        });
-    };
+    //     });
+    // };
 
     render() {
-        const { classes } = this.props;
         return (
-            <Paper className={classes.root}>
-                {buttons.map(button => (
-                    <Button
-                        key={button.variant}
-                        variant="contained"
-                        className={clsx(classes.button, classes[button.variant])}
-                        onClick={this.handleClick(button)}
-                    >
-                        {button.variant}
-                    </Button>
-                ))}
+            <Paper >
+                
                 <Button
                     variant="contained"
-                    className={classes.button}
                     onClick={this.handleClickWithAction}
                 >
                     default
@@ -84,4 +68,4 @@ class MessageButtons extends Component {
     }
 }
 
-export default withStyles(styles)(withSnackbar(MessageButtons));
+export default withSnackbar(Notifications);

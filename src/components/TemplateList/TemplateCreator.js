@@ -14,7 +14,6 @@ import { withSnackbar } from 'notistack';
 
 const TemplateCreator = props => {
     
-console.log(props);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -87,7 +86,7 @@ console.log(props);
                 </FormGroup>
                 <Button type="submit">SET NAME</Button>
             </Form>
-
+            <br/>
                 {props.courses ? props.courses.map( (course, i) => {
                     return(
                         <Container key={i}>
@@ -99,13 +98,35 @@ console.log(props);
                                 <Button onClick={()=>handleShowCh(i)}>Add Chapter</Button>
                                 </Col>
                             </Row>
+                            <br/>
+                            <Row>
+                                
+                                {course.chapters.length > 0 ? course.chapters.map((chapter,j) => {
+                                    return(
+                                        
+                                        <Container key={j}>
+                                            <br/> 
+                                            <Row>
+                                                <Col>
+                                                <h6>chapter {j+1} : {chapter.name}</h6>
+                                                </Col>
+                                                <Col>
+                                                <h6>Estimated Time : {chapter.duration} hrs</h6>
+                                                </Col>
+                                            </Row>
+                                            <Divider light />
+                                        </Container>
+
+                                    );
+
+                                }) : null}
+                            </Row>
                             <Divider light />
                             <br />
                         </Container>
                         
                     );
                 }) : null}
-                <br/>
 
                 <Modal show={showCh} onHide={handleCloseCh} >
                             <Modal.Header closeButton>

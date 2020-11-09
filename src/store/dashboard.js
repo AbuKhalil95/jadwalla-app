@@ -17,7 +17,6 @@ export default (state = initialState, action) => {
         ...state,
         total: payload.pro,
         statistics: payload.data,
-        
       };
 
     default:
@@ -33,6 +32,7 @@ export const getDash = () => {
     cache: 'no-cache',
     headers: { 'Authorization': `Bearer ${token}` },
   };
+  console.log(token, user_id)
   return async dispatch => {
     let res = await axios.get(`https://jadwalla.herokuapp.com/api/v1/dashboard/${user_id}`, options);
     console.log(res.data)

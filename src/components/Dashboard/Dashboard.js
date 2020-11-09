@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react';
+import React, { useEffect , useState} from 'react';
 import { connect } from 'react-redux';
 import { getDash } from '../../store/dashboard';
 import { Card } from "react-bootstrap";
@@ -8,21 +8,26 @@ import { withSnackbar } from 'notistack';
 import './dashboard.scss';
 
 const Dashboard = props => {
-console.log(props)
+
+  const [count, setCount] = useState(0);
+  
   useEffect(async() => {
     await props.getDash();
-    
   }, []);
 
-
-  setTimeout(async () => {
-    if(props.total>0){
+  if(props.total>0 && count === 0){
+      const noti = setTimeout(async () => {
       window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
-      props.enqueueSnackbar(`You have a total progress of ${props.total}`, { variant: 'info' });
-    }
-  }, 2000);
+      await props.enqueueSnackbar(`Hey Champ, You have a total progress of ${props.total} %, Good Job!`, { variant: 'info' });
+    }, 4000);
+
+    setCount(1);
+
+    setTimeout(() => {
+      clearTimeout(noti);
+    },4500)
     
-  
+  }
 
   const variant = [
     'Primary',
