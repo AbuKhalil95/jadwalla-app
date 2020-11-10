@@ -21,28 +21,9 @@ import LockIcon from '@material-ui/icons/Lock';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import FaceIcon from '@material-ui/icons/Face';
 import cookie from 'js-cookie';
-import { handleLogOut } from '../store/auth';
-import { Redirect } from 'react-router-dom';
+import {handleLogOut} from '../store/auth';
+import  { Redirect } from 'react-router-dom';
 
-import React from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
-
-function Header() {
-  return (
-    <>
-      <Navbar bg="primary" variant="dark">
-        <Nav className="mr-auto">
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/wall">Wall</Nav.Link>
-          <Nav.Link href="/myWall">My Wall</Nav.Link>
-          <Nav.Link href="/chat">Chat</Nav.Link>
-
-        </Nav>
-      </Navbar>
-    </>
-  );
-};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,7 +50,7 @@ const Header = (props) => {
   }
 
   useEffect(() => {
-    setAuth(cookie.get('userId') ? cookie.get('userId') : null);
+        setAuth(cookie.get('userId') ? cookie.get('userId') : null);
   }, []);
 
   return (
@@ -79,31 +60,31 @@ const Header = (props) => {
           <MenuButton iconType={NotificationsNoneIcon} type={'notifications'} content={['One Notif']} />
           <Typography variant="h6" className={classes.title}>
             <IconButton color="inherit" aria-label="Logo">
-              <TableChartIcon />
+              <TableChartIcon/>
             </IconButton>
             Jadwalla
           </Typography>
-          <div style={{ display: 'flex' }}>
-            <IconButton color="inherit" aria-label="Home Page" component={Link} to={'/'}>
-              <HomeIcon />
-            </IconButton>
-            {auth && (
-              <>
-                <MenuButton iconType={AccountCircleIcon} type={'profile'}
-                  content={[['Profile', '/profile'], ['Dashboard', '/dashboard'], ['Settings', '/settings']]} />
-              </>
-            )}
+          <div style={{display: 'flex'}}>
+          <IconButton color="inherit" aria-label="Home Page" component={Link} to={'/'}>
+            <HomeIcon/>
+          </IconButton>
+          {auth && (
+            <>
+              <MenuButton iconType={AccountCircleIcon} type={'profile'} 
+              content={[['Profile','/profile'], ['Dashboard','/dashboard'], ['Settings','/settings']]}/>
+            </>
+          )}
           </div>
           <div>
             {auth ? (
-              <IconButton color="inherit" aria-label="Logout" component={Link} to={'/'} onClick={logOut}>
-                <LockIcon />
-              </IconButton>) : (
-                <IconButton color="inherit" aria-label="Login" component={Link} to={'/signin'}>
-                  <LockOpenIcon />
-                </IconButton>
-              )}
-
+            <IconButton color="inherit" aria-label="Logout" component={Link} to={'/'} onClick={logOut}>
+              <LockIcon />
+            </IconButton>) : (
+               <IconButton color="inherit" aria-label="Login" component={Link} to={'/signin'}>
+               <LockOpenIcon/>
+             </IconButton>
+            )}
+            
           </div>
         </Toolbar>
       </AppBar>
