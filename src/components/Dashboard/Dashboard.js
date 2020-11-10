@@ -42,7 +42,7 @@ const Dashboard = props => {
   ];
   return (
     <>
-      <Timetable/>
+      {/* <Timetable/> */}
       <ul className="list-container">
         {props.data.map((course, idx) => {
           return (

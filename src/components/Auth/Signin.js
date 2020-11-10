@@ -65,9 +65,9 @@ const Signin = props => {
 
             </Col>
             <Col>
-              <div class="signin-image">
+              <div className="signin-image">
                 <img src={signUpImg} alt="sing in" /> <br /> <br />
-                <a href="/signup" class="signin">Not a user? Create an account</a>
+                <a href="/signup" className="signin">Not a user? Create an account</a>
 
               </div>
             </Col>
