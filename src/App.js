@@ -9,10 +9,10 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <SnackbarProvider maxSnack={3}>
-        <Header />
-        <Main />
-        <Footer />
+        <SnackbarProvider maxSnack={3}>
+          <Header />
+          <Main />
+          <Footer />
         </SnackbarProvider>
       </BrowserRouter>
     </div>
