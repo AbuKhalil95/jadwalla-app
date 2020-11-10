@@ -23,7 +23,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Session = props => {
   const classes = useStyles();
+  const [lessonId, setLessonId] = useState('');
   const [lesson, setLesson] = useState('');
+
   const [time, setTime] = useState(0)
   // modal functions
   const [showCh, setShowCh] = useState(false);
@@ -37,12 +39,17 @@ const Session = props => {
 
       handleShowCh();
     }
-    props.toggleSession(lesson);
+    props.toggleSession(lessonId, lesson);
     console.log('updated session ------------>   ', props.session);
   }
 
   const handleChange = (event) => {
-    setLesson(event.target.value);
+    console.log(event.nativeEvent.target);
+
+    let id =  event.target.value;
+    // let string = event.nativeEvent.target[event.nativeEvent.target.selectedIndex].text
+    setLessonId(id);
+    // setLesson(string);
   };
 
   const onSessionSubmit = async (e)=> {
@@ -68,6 +75,23 @@ const Session = props => {
   
     let res = await axios.post(`https://jadwalla.herokuapp.com/api/v1/weekly`, day, options);
     console.log('response from session', res)
+    handleUpdateHistory(day.lessonId)
+  };
+
+  const handleUpdateHistory = async (id) => {
+    let token = cookie.get('auth');
+    // let params = JSON.stringify(sciSchedule);
+    const options = {
+      mode: 'cors',
+      cache: 'no-cache',
+      headers: { 'Authorization': `Bearer ${token}`,
+      'content-type': 'application/json'
+      },
+    };
+    console.log('lesson id being updated >>>>>>>>>>>', id);
+  
+    let res = await axios.put(`https://jadwalla.herokuapp.com/api/v1/history/lesson/:id`, id, options);
+    console.log('response from session', res)
   };
 
   return (
@@ -77,7 +101,7 @@ const Session = props => {
       <br/>
         {props.history.name}
       <br/>
-      <Button variant="contained" onClick={handleToggle} color={props.session.active? "secondary" : "primary"}>
+      <Button variant="contained" onClick={handleToggle} color={props.session.active ? "secondary" : "primary"}>
         {props.session.active ? ("END") : ("START")}
       </Button>
 
@@ -101,7 +125,7 @@ const Session = props => {
         <Select
           labelId="demo-simple-select-outlined-label"
           id="demo-simple-select-outlined"
-          value={lesson}
+          value={lessonId}
           onChange={handleChange}
           label="Lesson"
         >

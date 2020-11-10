@@ -12,6 +12,7 @@ const initialState = {
     ownerId: cookie.get('userId'),
     date: 0,
     lessonId: '',
+    lesson: '',
     time: 0,
     completed:0,
   },
@@ -35,8 +36,10 @@ export default (state = initialState, action) => {
 
         today = initialState.day;
         today.date = new Date();
-        today.lessonId = payload;
-        return {...state, active: !state.active, day: today};
+        today.lessonId = payload[0];
+        today.lessonId = payload[1];
+        // return {...state, active: !state.active, day: today};
+
       } else if(state.active) {
         date.start = JSON.parse(localStorage.getItem('session')).start;
         console.log('date start ', date.start);
@@ -57,14 +60,14 @@ export default (state = initialState, action) => {
   }
 };
 
-export const toggleSession = (id) => {
+export const toggleSession = (id, name) => {
   return async dispatch => {
     console.log('data start session sending to history', id);
     // let res = await axios.put(`https://jadwalla.herokuapp.com/api/v1/dashboard/${user_id}`, options);
     // console.log(res)
     dispatch({
       type: 'TOGGLE-SESSION',
-      payload: id,
+      payload: [id, name],
     });
   };
 };
