@@ -6,6 +6,7 @@ import MyWall from '../Wall/my-wall';
 import Wall from '../Wall/wall';
 import Chat from '../Chat/Chat';
 import MyChat from '../Chat/subject-chat';
+import OurTeam from '../ourTem/ourTeam';
 
 function Main() {
     return (
@@ -34,6 +35,9 @@ function Main() {
                 </Route>
                 <Route exact path="/myChat">
                     <MyChat />
+                </Route>
+                <Route exact path="/ourTeam">
+                    <OurTeam />
                 </Route>
 
                 <Route>404 Page Not Found!</Route>

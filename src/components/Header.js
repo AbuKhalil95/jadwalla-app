@@ -14,7 +14,7 @@ function Header() {
           <Nav.Link href="/wall">Wall</Nav.Link>
           <Nav.Link href="/my-wall">My Wall</Nav.Link>
           <Nav.Link href="/myChat">My Chat</Nav.Link>
-
+          <Nav.Link href="/ourTeam">Our Team</Nav.Link>
         </Nav>
       </Navbar>
     </>

@@ -3,11 +3,11 @@ import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import Header from './components/Header';
 import Main from './components/Main/index';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="App">
+    <div style={{ background: "#FFFFFF", height: "100vh", width: "100vw", display: "flex", flexDirection: "column" }}>
       <BrowserRouter>
         <Header />
         <Main />
