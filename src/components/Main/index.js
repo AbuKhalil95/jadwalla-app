@@ -15,7 +15,7 @@ import Notifications from '../Notification/Notifications';
 
 function Main() {
     return (
-        <main>
+        <>
             <Switch>
                 <Route exact path="/">
                     <Home_Osama />
@@ -31,37 +31,39 @@ function Main() {
 
                 <Route exact path="/myWall">
                     <MyWall />
-                    <Route exact path="/dashboard">
-                        <Dashboard />
-                    </Route>
+                </Route>
 
-                    <Route exact path="/create-template">
-                        <TemplateCreator />
-                    </Route>
+                <Route exact path="/dashboard">
+                    <Dashboard />
+                </Route>
 
-                    <Route exact path="/select-template">
-                        <TemplateSelector />
-                    </Route>
+                <Route exact path="/create-template">
+                    <TemplateCreator />
+                </Route>
 
-                    <Route exact path="/Notifications">
-                        <Notifications />
-                    </Route>
-                    <Route path="/wall">
-                        <Wall />
-                    </Route>
-                    <Route exact path="/chat">
-                        <Chat />
-                    </Route>
-                    <Route exact path="/myChat">
-                        <MyChat />
-                    </Route>
+                <Route exact path="/select-template">
+                    <TemplateSelector />
+                </Route>
 
-                    <Route exact path="/yahya">
-                        {/* <Yahya/> */}
-                    </Route>
-                    <Route>404 Page Not Found!</Route>
+                <Route exact path="/Notifications">
+                    <Notifications />
+                </Route>
+                <Route path="/wall">
+                    <Wall />
+                </Route>
+                <Route exact path="/chat">
+                    <Chat />
+                </Route>
+                <Route exact path="/myChat">
+                    <MyChat />
+                </Route>
+
+                <Route exact path="/yahya">
+                    {/* <Yahya/> */}
+                </Route>
+                <Route>404 Page Not Found!</Route>
             </Switch>
-        </main>
+        </>
     )
 }
 
