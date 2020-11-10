@@ -6,14 +6,15 @@ import MyWall from '../Wall/my-wall';
 import Wall from '../Wall/wall';
 import Chat from '../Chat/Chat';
 import MyChat from '../Chat/subject-chat';
+import Home from '../HomePage';
 
 function Main() {
     return (
         <main>
             <Switch>
                 <Route exact path="/">
+                    <Home />
                 </Route>
-
                 <Route exact path="/signin">
                     <SignIn />
                 </Route>
