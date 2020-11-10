@@ -23,6 +23,7 @@ const AddChapter = props => {
                         autoFocus
                         type="number"
                         name="duration"
+                        min={0}
                         defaultValue={(props.chapter && props.chapter.name) || "DURATION"}
                     />
                 </FormGroup>

@@ -24,6 +24,7 @@ const AddCourse = props => {
                         type="number"
                         name="expectedHours"
                         placeholder =" HOURS"
+                        min={0}
                     />
                 </FormGroup>
 
@@ -33,6 +34,7 @@ const AddCourse = props => {
                         autoFocus
                         type="number"
                         name="noOfChapters"
+                        min={0}
                         placeholder = "Number of chapters"
                     />
                 </FormGroup>

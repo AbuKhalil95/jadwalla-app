@@ -77,9 +77,9 @@ const Signup = props => {
             </Col>
             <Col>
             <br /> <br/> <br/>
-              <div class="signup-image">
+              <div className="signup-image">
                 <img src={signUpImg} alt="sing up" />  <br /> <br/>
-                <a href="/signin" class="signup">I am already member</a>
+                <a href="/signin" className="signup">I am already member</a>
               </div>
 
             </Col>
