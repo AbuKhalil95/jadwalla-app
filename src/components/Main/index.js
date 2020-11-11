@@ -13,13 +13,14 @@ import Home from './home.js';
 import TemplateCreator from '../TemplateList/TemplateCreator.js';
 import TemplateSelector from '../TemplateList/TemplateSelector.js';
 import Notifications from '../Notification/Notifications';
+import Profile from '../profile/profile';
 
 function Main(props) {
     useEffect(() => {
         console.log(props.auth)
     }, [props.auth]);
     return (
-        <>
+        <main>
             <Switch>
                 <Route exact path="/">
                     <Landing />
@@ -31,42 +32,36 @@ function Main(props) {
                 <Route exact path="/signup">
                     <SignUp />
                 </Route>
-
-                <Route exact path="/myWall">
-                    <MyWall />
+                <Route exact path="/profile">
+                    <Profile />
                 </Route>
-
                 <Route exact path="/dashboard">
                     <Dashboard />
                 </Route>
-
                 <Route exact path="/create-template">
                     <TemplateCreator />
                 </Route>
-
                 <Route exact path="/select-template">
                     <TemplateSelector />
                 </Route>
-
                 <Route exact path="/Notifications">
                     <Notifications />
                 </Route>
-                <Route path="/wall">
-                    <Wall />
+                <Route exact path="/my-wall">
+                    <MyWall />
                 </Route>
-                <Route exact path="/chat">
-                    <Chat />
+                <Route path="/wall/">
+                    <Wall />
                 </Route>
                 <Route exact path="/myChat">
                     <MyChat />
                 </Route>
-
-                <Route exact path="/yahya">
-                    {/* <Yahya/> */}
+                <Route exact path="/Chat">
+                    <Chat />
                 </Route>
                 <Route>404 Page Not Found!</Route>
-            </Switch>
-        </>
+            </Switch >
+        </main >
     )
 }
 const mapStateToProps = state => ({

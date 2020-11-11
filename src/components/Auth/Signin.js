@@ -2,14 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { handleSignIn } from '../../store/auth';
-import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col, Card, Form } from "react-bootstrap";
+import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col } from "react-bootstrap";
 import './auth.scss';
 import { Redirect } from 'react-router-dom';
 import signUpImg from '../../images/signin-image.jpg';
 import { Link, withRouter } from "react-router-dom";
-import { withSnackbar } from 'notistack';
-
-
 
 const Signin = props => {
   const [redirect, setRedirect] = useState(false);
@@ -70,9 +67,9 @@ const Signin = props => {
               </div>
             </Col>
           </Row>
-
-        </Container>
+        </Container >
       </Card>
+
     </>
   );
 };
@@ -83,4 +80,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { handleSignIn };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(Signin));
+export default connect(mapStateToProps, mapDispatchToProps)(Signin);
