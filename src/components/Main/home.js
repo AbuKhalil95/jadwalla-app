@@ -22,8 +22,7 @@ const Home = props => {
     props.getSessions();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.auth])
-
+  }, [props.auth, props.history.name])
 
   return (
     <>
@@ -31,7 +30,7 @@ const Home = props => {
       <div>This is a guide pre login {props.auth.username || 'non-logged'}</div>
       <div>This is guide shown only once after login {props.auth.username}</div>
       <div>This is not a guide, but a homepage to start / continue</div>
-      {auth ? (
+      {auth ?  (props.history.name === "") ? (
         <>
           <Link to='./create-template'>
             <Button variant="contained" color="primary">CREATE YOUR OWN TEMPLATE</Button> 
@@ -39,9 +38,8 @@ const Home = props => {
           <Link to='./select-template'>
             <Button variant="contained" color="primary">CHOOSE FROM OTHER TEMPLATES</Button> 
           </Link>
-          <Session/>     
         </>
-        ) : null}      
+        ) : (<>Continue the good progress!<br/><Session/></> ) : null}      
     </>
   )
 }
