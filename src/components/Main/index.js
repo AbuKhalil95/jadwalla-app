@@ -17,14 +17,13 @@ import Profile from '../profile/profile';
 
 function Main(props) {
     useEffect(() => {
-        console.log(props.auth)
-    }, [props.auth]);
+        console.log('props.auth.name', props.auth.name)
+    }, [props]);
     return (
         <main>
             <Switch>
                 <Route exact path="/">
-                    <Landing />
-                    {props.auth.name ? <Landing /> : <Home />}
+                    {props.auth.name ? <Home /> : <Landing />}
                 </Route>
                 <Route exact path="/signin">
                     <SignIn />
