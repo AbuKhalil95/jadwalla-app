@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import {getDash} from '../../store/dashboard';
+import { getDash } from '../../store/dashboard';
 import Timetable from './Timetable.js';
 import Calender from './Calender.js'
 import { Card } from "react-bootstrap";
@@ -13,11 +13,11 @@ const Dashboard = props => {
   const [sessions, setSessions] = useState([]);
   const [count, setCount] = useState(0);
 
-  const convertToSessions = (sessions) => {
-    console.log('All sessions in timetable', sessions);
+  const convertToSessions = (allSessions) => {
+    console.log('All sessions in timetable', allSessions);
 
-    if (sessions.length > 0) {
-      const modSessions = sessions.map((session, index) => {
+    if (allSessions.length > 0) {
+      const modSessions = allSessions.map((session, index) => {
         let start = new Date(session.date);
         let duration = new Date(session.time);
         return {
@@ -33,14 +33,16 @@ const Dashboard = props => {
       setSessions(modSessions);
     }
   }
-  
-  useEffect(() => {
-    convertToSessions(props.sessions);
-  }, [props.sessions]);
-  
+
   useEffect(async() => {
     await props.getDash();
   }, []);
+  
+  useEffect(async () => {
+    await props.getDash();
+    convertToSessions(props.sessions);
+  }, [props.sessions]);
+  
 
   if(props.total>0 && count === 0){
       const noti = setTimeout(async () => {
@@ -102,6 +104,7 @@ const Dashboard = props => {
 const mapStateToProps = state => ({
   data: state.dashboard.statistics,
   total: state.dashboard.total,
+  sessions: state.allSessions
 });
 
 const mapDispatchToProps = { getDash};
