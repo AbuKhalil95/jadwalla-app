@@ -1,16 +1,12 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { handleSignIn } from '../../store/auth';
 import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col, Card, Form } from "react-bootstrap";
-<<<<<<< HEAD
 import './auth.scss';
-=======
->>>>>>> f8ce1a5ed7a70408c6e23252169e675794d026c1
 import { Redirect } from 'react-router-dom';
 import signUpImg from '../../images/signin-image.jpg';
+import { Link, withRouter } from "react-router-dom";
 import { withSnackbar } from 'notistack';
-
 const Signin = props => {
   const [redirect, setRedirect] = useState(false);
   const handleSubmit = async (e) => {
@@ -27,55 +23,6 @@ const Signin = props => {
     props.enqueueSnackbar('Ready to start a new Learning Adventure?', { variant: 'info' });
     props.enqueueSnackbar(button.message, { variant: button.variant });
   };
-<<<<<<< HEAD
-  return (
-    <>
-      {redirect && <Redirect to='/' />}
-      <Card>
-        <Container className={'siucon'}>
-          <Row>
-            <Col>
-              <h1>Sign In</h1> <br />
-              <form onSubmit={handleSubmit}>
-                <FormGroup controlId="email" bsSize="large">
-                  <FormLabel>Email</FormLabel>
-                  <FormControl
-                    autoFocus
-                    type="email"
-                    name="username"
-                    placeholder="Username"
-                  />
-
-                </FormGroup>
-                <FormGroup controlId="password" bsSize="large">
-                  <FormLabel>Password</FormLabel>
-                  <FormControl
-                    type="password"
-                    name="password" placeholder="Password"
-                  />
-                  
-                </FormGroup>
-                <Form.Group controlId="formBasicCheckbox">
-                  <Form.Check type="checkbox" label="Remember me" checked />
-                </Form.Group>
-                <Button block bsSize="large" type="submit" onClick={handleClick({ variant: 'success', message: 'Welcome back' })}>
-                  Login
-                </Button>
-              </form>
-            </Col>
-
-            <Col>
-              <div class="signin-image">
-                <img src={signUpImg} alt="sing in" /> <br /> <br />
-                <a href="/signup" class="signin">Not a user? Create an account</a>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </Card>
-=======
-
-
   return (
     <>
       <div className="signindiv" >
@@ -83,7 +30,6 @@ const Signin = props => {
           <Container className='siucon'>
             <Row className="row1">
               <Col className="col1">
-
                 <form onSubmit={handleSubmit}>
                   <h1>Sign In</h1> <br />
                   <FormGroup controlId="email" bsSize="large">
@@ -105,34 +51,26 @@ const Signin = props => {
                   <Form.Group controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Remember me" checked />
                   </Form.Group>
-
                   <Button block bsSize="large" type="submit" onClick={handleClick({ variant: 'success', message: 'Welcome back' })}>
                     Login
                 </Button>
                 </form>
-
               </Col>
               <Col>
                 <div className="signin-image">
                   <img src={signUpImg} alt="sing in" /> <br /> <br />
                   <a href="/signup" className="signin">Not a user? Create an account</a>
-
                 </div>
               </Col>
             </Row>
-
           </Container>
         </Card>
       </div>
->>>>>>> f8ce1a5ed7a70408c6e23252169e675794d026c1
     </>
   );
 };
-
 const mapStateToProps = state => ({
   user: state.auth.token
 });
-
 const mapDispatchToProps = { handleSignIn };
-
 export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(Signin));
