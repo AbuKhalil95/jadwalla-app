@@ -2,7 +2,6 @@ import './home.css';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from "react-router-dom";
-import { Button } from '@material-ui/core';
 import { getHistory } from '../../store/history.js';
 import { getTemplates } from '../../store/allTemplates.js'
 import { getDash } from '../../store/dashboard';
