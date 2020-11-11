@@ -62,9 +62,11 @@ const Timetable = (props) => {
         uid: index + 1,
         start: moment(session.date),
         end: moment(session.date).add(session.time + 1000000, 'seconds'),
-        value: `${session.lessonId} \n  ${session.completed*100}% in ${session.time} seconds`
+        value: `${session.lesson} \n  ${session.completed*100}% in ${session.time} seconds`,
+        location: 'Room 1',
       }
     });
+    console.log('All intervals in timetable', intervals);
     setInterval(intervals);
   }
 
@@ -72,6 +74,11 @@ const Timetable = (props) => {
     setInterval([]);
     convertPropsToIntervals(props.sessions);
   }, [props.sessions]);
+
+  useEffect(()=> {
+    setInterval([]);
+    convertPropsToIntervals(props.sessions);
+  }, []);
 
   return <>
     <WeekCalendar

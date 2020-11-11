@@ -2,30 +2,53 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { getDash } from '../../store/dashboard';
 import Timetable from './Timetable.js';
-import Calender from './Calender.js'
+import Calender from './Calender2.js'
 import { Card } from "react-bootstrap";
-import { withSnackbar } from 'notistack';
 import './dashboard.scss';
+import { priorities } from './data.js';
+import { getDash } from '../../store/dashboard';
+import { getSessions } from '../../store/allSessions';
+import Fab from "@material-ui/core/Fab";
+import { makeStyles } from '@material-ui/core/styles';
+import AddIcon from "@material-ui/icons/Add";
+
+const useStyles = makeStyles((theme) => ({
+  addButton: {
+    position: "absolute",
+    top: '15vh',
+    right: '10vh'
+  }
+}));
 
 const Dashboard = props => {
   const [sessions, setSessions] = useState([]);
+  const classes = useStyles();
+  const [show, setShow] = useState(true);
   const [count, setCount] = useState(0);
 
   const convertToSessions = (allSessions) => {
     console.log('All sessions in timetable', allSessions);
 
-    if (allSessions.length > 0) {
+    if (allSessions && allSessions.length > 0) {
       const modSessions = allSessions.map((session, index) => {
         let start = new Date(session.date);
-        let duration = new Date(session.time);
+        console.log(' from start', start);
+        console.log(' a sessions in timetable', start.getTime(), session.time);
+        console.log(' Added session', new Date(start.getTime() + session.time));
+        let prioColor;
+        priorities.forEach(subject => {
+          if (session.lesson.toLowerCase().includes(subject.text.toLowerCase())) {
+            prioColor = subject.id;
+          }
+        })
+
         return {
           id: index,
           startDate: new Date(new Date(session.date).getTime()),
-          endDate: new Date(start.getTime() + duration.getTime()),
-          title: `${session.lessonId} \n  ${session.completed*100}% in ${session.time} seconds`,
-          location: 'Room 1',
+          endDate: new Date(start.getTime() + session.time),
+          title: `${session.lesson} \n  ${session.completed*100}% in ${session.time} seconds`,
+          priorityId: prioColor,
         }
       });
       
@@ -36,6 +59,10 @@ const Dashboard = props => {
 
   useEffect(async() => {
     await props.getDash();
+    await props.getDash();
+    await props.getSessions();
+    convertToSessions(props.sessions);
+
   }, []);
   
   useEffect(async () => {
@@ -70,10 +97,20 @@ const Dashboard = props => {
   ];
   return (
     <>
-      <Calender data={sessions}/>
+      {/* <Calender data={sessions}/> */}
+      <div style={{display: show ? 'block' : 'none'}}>
+        <Calender data={sessions} />
+      </div>
+      <Fab
+          color="secondary"
+          className={classes.addButton}
+          onClick={() => setShow(!show)}
+        >
+          <AddIcon />
+        </Fab>
       {/* <Timetable/> */}
       <ul className="list-container">
-        {props.data.map((course, idx) => {
+        {props.data.length > 0 ? props.data.map((course, idx) => {
           return (
             <Card
               bg={variant[idx].toLowerCase()}
@@ -93,8 +130,8 @@ const Dashboard = props => {
                 </Card.Text>
               </Card.Body>
             </Card>
-          );
-        })}
+          )
+        }) : null}
       </ul>
 
     </>
@@ -107,6 +144,6 @@ const mapStateToProps = state => ({
   sessions: state.allSessions
 });
 
-const mapDispatchToProps = { getDash};
+const mapDispatchToProps = { getDash, getSessions };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(Dashboard));
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
