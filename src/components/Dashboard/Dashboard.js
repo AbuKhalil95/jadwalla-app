@@ -2,7 +2,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-
 import Timetable from './Timetable.js';
 import Calender from './Calender2.js'
 import { Card } from "react-bootstrap";
@@ -26,12 +25,13 @@ const Dashboard = props => {
   const [sessions, setSessions] = useState([]);
   const classes = useStyles();
   const [show, setShow] = useState(true);
+  const [count, setCount] = useState(0);
 
-  const convertToSessions = (sessions) => {
-    console.log('All sessions in timetable', sessions);
+  const convertToSessions = (allSessions) => {
+    console.log('All sessions in timetable', allSessions);
 
-    if (sessions && sessions.length > 0) {
-      const modSessions = sessions.map((session, index) => {
+    if (allSessions && allSessions.length > 0) {
+      const modSessions = allSessions.map((session, index) => {
         let start = new Date(session.date);
         console.log(' from start', start);
         console.log(' a sessions in timetable', start.getTime(), session.time);
@@ -56,16 +56,34 @@ const Dashboard = props => {
       setSessions(modSessions);
     }
   }
-  useEffect(() => {
-    props.getDash();
-    props.getSessions();
+
+  useEffect(async() => {
+    await props.getDash();
+    await props.getDash();
+    await props.getSessions();
     convertToSessions(props.sessions);
 
   }, []);
   
-  useEffect(() => {
+  useEffect(async () => {
+    await props.getDash();
     convertToSessions(props.sessions);
   }, [props.sessions]);
+  
+
+  if(props.total>0 && count === 0){
+      const noti = setTimeout(async () => {
+      window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
+      await props.enqueueSnackbar(`Hey Champ, You have a total progress of ${props.total} %, Good Job!`, { variant: 'info' });
+    }, 4000);
+
+    setCount(1);
+
+    setTimeout(() => {
+      clearTimeout(noti);
+    },4500)
+    
+  }
 
   const variant = [
     'Primary',
@@ -122,7 +140,8 @@ const Dashboard = props => {
 
 const mapStateToProps = state => ({
   data: state.dashboard.statistics,
-  sessions: state.allSessions,
+  total: state.dashboard.total,
+  sessions: state.allSessions
 });
 
 const mapDispatchToProps = { getDash, getSessions };

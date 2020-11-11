@@ -7,6 +7,10 @@ import './auth.scss';
 import { Redirect } from 'react-router-dom';
 import signUpImg from '../../images/signin-image.jpg';
 import { Link, withRouter } from "react-router-dom";
+import { withSnackbar } from 'notistack';
+import bg from './../../images/study.jpg';
+import './auth.scss';
+
 
 const Signin = props => {
   const [redirect, setRedirect] = useState(false);
@@ -59,15 +63,15 @@ const Signin = props => {
               </form>
             </Col>
             <Col>
-              <div class="signin-image">
+              <div className="signin-image">
                 <img src={signUpImg} alt="sing in" /> <br /> <br />
-                <a href="/signup" class="signin">Not a user? Create an account</a>
+                <a href="/signup" className="signin">Not a user? Create an account</a>
+
               </div>
             </Col>
           </Row>
-        </Container >
+        </Container>
       </Card>
-
     </>
   );
 };
