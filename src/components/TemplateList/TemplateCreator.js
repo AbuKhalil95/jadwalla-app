@@ -211,4 +211,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { setTemp, handleCourse, handleChapter };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TemplateCreator);
+export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(TemplateCreator));

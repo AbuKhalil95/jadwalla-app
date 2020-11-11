@@ -1,15 +1,40 @@
-.sectionGrid {
+
+.homeGrid {
+  background-color: white;
   width: 100%;
-  height: 100%;
+  min-height: 165vh;
   display: grid !important;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
   grid-template-areas: 
-  "profile profile . . . "
-  "profile profile . session session "
-  "profile profile . session session "
-  ". heatmap heatmap heatmap . "
-  ". heatmap heatmap heatmap . ";
+  "section"
+  ".";
+  z-index: -1;
+}
+.sectionGrid {
+  grid-area: section;
+  width: 100%;
+  min-height: 100vh;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: 
+  " . profile . . . . "
+  " . profile . session session . "
+  " . profile heatmap heatmap heatmap . ";
+  background-color: blanchedalmond;
+  z-index: 0;
+  box-shadow: 0px 10px 35px 70px rgba(0,0,0,0.8), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.backgroundImage {
+  height: 100%;
+  width: 100%;
+  background-image: url(./../../images/home.jpg) !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: fixed;
+  z-index: 0;
 }
 
 .profile {
@@ -18,8 +43,13 @@
 
 .heatmap {
   grid-area: heatmap;
+  margin-left: 3em;
 }
 
-footer {
-  grid-area: footer;
+.session {
+  grid-area: session;
+}
+
+.blankSpace {
+  grid-area: blank;
 }
