@@ -22,12 +22,12 @@ function Main(props) {
         <>
             <Switch>
                 <Route exact path="/">
+                    <Landing />
                     {props.auth.name ? <Landing /> : <Home />}
                 </Route>
                 <Route exact path="/signin">
                     <SignIn />
                 </Route>
-
                 <Route exact path="/signup">
                     <SignUp />
                 </Route>
