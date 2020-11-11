@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-const username = 'Osama';
+import cookie from 'js-cookie';
+const username = cookie.get('username');
 const Chat = (socket) => {
     const [roomName, setRoomName] = useState('');
     const [msg, setMsg] = useState('');
     const [usersNames, setUsersNames] = useState([]);
     const [oldMessages, setOldMessages] = useState([]);
     const [newMessages, setNewMessages] = useState([]);
-
     useEffect(() => {
         const room = window.location.href.split('?')[1].split('=')[1].toLowerCase();
         socket.emit('joinRoom', { room, username });

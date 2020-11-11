@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import cookie from 'js-cookie';
 import moment from 'moment';
 const WallGetter = (socket) => {
     const [posts, setPosts] = useState([]);
@@ -8,7 +9,7 @@ const WallGetter = (socket) => {
     const [postsSpinning, setPostsSpinning] = useState(true);
     useEffect(() => {
         //// You need to get the userId from store 
-        let userId = '5f7c297b3994e4066c549646';
+        let userId = cookie.get('userId');
         let link = 'http://localhost:3000/wall/' + userId;
         setShearedUrl(link);
     }, []);
@@ -17,9 +18,12 @@ const WallGetter = (socket) => {
             let postsArray = payload.map(val => {
                 return outputMessage(val);
             });
+            console.log('postsArray', postsArray)
+
             setPosts([...postsArray]);
             setPostsSpinning(false);
         });
+
     }, [socket]);
     socket.on('newText', payload => {
         setNewPosts([outputMessage(payload), ...newPosts]);
