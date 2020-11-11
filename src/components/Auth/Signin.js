@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { handleSignIn } from '../../store/auth';
-import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col } from "react-bootstrap";
+import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col, Form, Card } from "react-bootstrap";
 import './auth.scss';
 import { Redirect } from 'react-router-dom';
 import signUpImg from '../../images/signin-image.jpg';
@@ -57,13 +57,11 @@ const Signin = props => {
                   Login
                 </Button>
               </form>
-
             </Col>
             <Col>
               <div class="signin-image">
                 <img src={signUpImg} alt="sing in" /> <br /> <br />
                 <a href="/signup" class="signin">Not a user? Create an account</a>
-
               </div>
             </Col>
           </Row>
