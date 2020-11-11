@@ -28,7 +28,10 @@ import { Nav, Navbar } from 'react-bootstrap';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    position: 'fixed',
+    top: '0',
+    width: '100%',
   },
   menuButton: {
     marginRight: theme.spacing(2)
@@ -72,7 +75,7 @@ const Header = (props) => {
             </IconButton>
             {auth && (
               <>
-                <MenuButton iconType={NotificationsNoneIcon} type={'notifications'} content={['One Notif']} />
+                {/* <MenuButton iconType={NotificationsNoneIcon} type={'notifications'} content={['One Notif']} /> */}
                 <MenuButton iconType={AccountCircleIcon} type={'profile'}
                   content={[['Profile', '/profile'], ['My Wall', '/myWall'], ['Chat', '/Chat'], ['Dashboard', '/dashboard'], ['Settings', '/settings']]} />
               </>

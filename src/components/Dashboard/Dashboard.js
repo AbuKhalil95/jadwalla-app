@@ -12,11 +12,12 @@ import { getSessions } from '../../store/allSessions';
 import Fab from "@material-ui/core/Fab";
 import { makeStyles } from '@material-ui/core/styles';
 import AddIcon from "@material-ui/icons/Add";
+import { withSnackbar } from 'notistack';
 
 const useStyles = makeStyles((theme) => ({
   addButton: {
     position: "absolute",
-    top: '15vh',
+    bottom: '15vh',
     right: '10vh'
   }
 }));
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = props => {
   const [sessions, setSessions] = useState([]);
   const classes = useStyles();
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const [count, setCount] = useState(0);
 
   const convertToSessions = (allSessions) => {
@@ -97,17 +98,11 @@ const Dashboard = props => {
   ];
   return (
     <>
+    {console.log('props.total', props.total)}
       {/* <Calender data={sessions}/> */}
       <div style={{display: show ? 'block' : 'none'}}>
         <Calender data={sessions} />
       </div>
-      <Fab
-          color="secondary"
-          className={classes.addButton}
-          onClick={() => setShow(!show)}
-        >
-          <AddIcon />
-        </Fab>
       {/* <Timetable/> */}
       <ul className="list-container">
         {props.data.length > 0 ? props.data.map((course, idx) => {
@@ -133,7 +128,13 @@ const Dashboard = props => {
           )
         }) : null}
       </ul>
-
+      <Fab
+          color="secondary"
+          className={classes.addButton}
+          onClick={() => setShow(!show)}
+        >
+          <AddIcon />
+        </Fab>
     </>
   );
 };
@@ -146,4 +147,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { getDash, getSessions };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(Dashboard));

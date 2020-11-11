@@ -14,7 +14,7 @@ const TemplateSelector = props => {
     <>
       <h2>With JADWALEH, track your day-to-day study timetable</h2>
       <h3>CHOOSE YOUR PLAN</h3>
-      {console.log(props.templates)}
+      {console.log('props.list', props.list)}
       <ul className="list-container">
         {props.list.length > 0 ? props.list.map((card, index) => {
           return (
@@ -25,7 +25,7 @@ const TemplateSelector = props => {
                   <Card.Text>
                     {card.description}
                   </Card.Text>
-                    <Button onClick={createSciTemplate}>CHOOSE THIS TEMPLATE</Button>
+                    <Button onClick={() => createSciTemplate(props.list[index])}>CHOOSE THIS TEMPLATE</Button>
                 </Card.Body>
               </Card>
             </li>

@@ -472,16 +472,15 @@ export default class Demo extends React.PureComponent {
           />
 
           <DayView
-            startDayHour={9}
-            endDayHour={19}
+            startDayHour={0}
+            endDayHour={23}
             // timeTableCellComponent={DayViewTimeTableCell}
             // dayScaleCellComponent={DayViewDayScaleCell}
             intervalCount={2}
           />
           <WeekView
-            startDayHour={9}
-            endDayHour={17}
-            excludedDays={[0, 6]}
+            startDayHour={0}
+            endDayHour={23}
             name="Work Week"
             // timeTableCellComponent={WeekViewTimeTableCell}
             // dayScaleCellComponent={WeekViewDayScaleCell}
