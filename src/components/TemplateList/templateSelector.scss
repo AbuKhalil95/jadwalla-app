@@ -1,10 +1,15 @@
-// .nameForm{
-//     float:left;
+ /* .nameForm{
+     float:left;
 
-// }
-// .nameLabel{
-//     float:left;
-// }
+ }
+ .nameLabel{
+     float:left;
+ } */
+@media all and (min-width: 480px) {
+body{
+    background: rgba(0, 0, 0, 0.5);
+    background-image: url(./../../images/study2.jpg) !important;
+}
 .submit{
     margin: 10px;
 }
@@ -14,4 +19,17 @@
 .instructions{
     text-align: left;
     padding: 10px;
+}
+
+.ctcf{
+    // background-image: url(./../../images/study.jpg);
+    background-size: cover;
+   min-width: 100%;
+   min-height: 100%;
+}
+.card-form{
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 }
