@@ -1,0 +1,25 @@
+.sectionGrid {
+  width: 100%;
+  height: 100%;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+  "profile profile . . . "
+  "profile profile . session session "
+  "profile profile . session session "
+  ". heatmap heatmap heatmap . "
+  ". heatmap heatmap heatmap . ";
+}
+
+.profile {
+  grid-area: profile;
+}
+
+.heatmap {
+  grid-area: heatmap;
+}
+
+footer {
+  grid-area: footer;
+}

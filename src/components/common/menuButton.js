@@ -49,7 +49,7 @@ class MenuButton extends React.Component {
 
     const listItems = () => {    
       if(this.props.type === 'profile') {
-        return this.props.content.map((link) => <Link to={link[1]}><MenuItem key={link} 
+        return this.props.content.map((link) => <Link key={link} to={link[1]}><MenuItem key={link} 
         onClick={this.handleClose} >{link[0]}</MenuItem></Link>);
       }
     }
