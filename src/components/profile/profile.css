@@ -1,20 +1,21 @@
 .userCard {
   width: fit-content;
-  margin: 0 auto;
-  padding: 5em;
+  padding: 7em 0;
   border-radius: 2em;
   border: black;
+  border-width: 1em;
+  margin-top: 1em;
 }
 
 .userProfile {
   /* padding: 20em; */
-  height: 10em;
+  width: 250px;
+  height: 250px;
   background-image: url(./../../images/placeholder_avatar.png) !important;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   margin-bottom: 1em;
-  
 }
 
 .username {

@@ -10,14 +10,18 @@ const Profile = (props) => {
     <div className='userCard'>
       <div className='userProfile'/>
       <div className='username'>{props.username}</div>
-      <div className='userHistory'>{props.history.name ? props.history.name : 'New User!'}</div>
-      <div className='userStart'>{props.history.name ? 'Started at: ' + props.history.startDate : null}</div>
-      <Link disabled={props.history.name ? true : false} to='./create-template'>
-        <Button variant="contained" color="primary" disabled={props.history.name ? true : false}>CREATE</Button> 
-      </Link>
-      <Link disabled={props.history.name ? true : false} to='./select-template'>
-        <Button variant="contained" color="primary" disabled={props.history.name ? true : false}>CHOOSE</Button> 
-      </Link>
+      <hr/>
+      <div className='userHistory'><b>{props.history.name ? props.history.name : 'No History Yet!'}</b></div>
+      <div className='userStart' style={{color: '#888888'}}>{props.history.name ? 'Started at: ' + props.history.startDate : null}</div>
+      <hr/>
+      <div>
+        <Link disabled={props.history.name ? true : false} to='./create-template'>
+          <Button variant="contained" color="primary" disabled={props.history.name ? true : false}>CREATE</Button> 
+        </Link>
+        <Link disabled={props.history.name ? true : false} to='./select-template'>
+          <Button variant="contained" color="primary" disabled={props.history.name ? true : false}>CHOOSE</Button> 
+        </Link>
+      </div>
     </div>
   )
 }

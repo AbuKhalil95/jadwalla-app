@@ -16,7 +16,7 @@ import AddIcon from "@material-ui/icons/Add";
 const useStyles = makeStyles((theme) => ({
   addButton: {
     position: "absolute",
-    top: '15vh',
+    bottom: '15vh',
     right: '10vh'
   }
 }));
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = props => {
   const [sessions, setSessions] = useState([]);
   const classes = useStyles();
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const [count, setCount] = useState(0);
 
   const convertToSessions = (allSessions) => {
@@ -101,13 +101,6 @@ const Dashboard = props => {
       <div style={{display: show ? 'block' : 'none'}}>
         <Calender data={sessions} />
       </div>
-      <Fab
-          color="secondary"
-          className={classes.addButton}
-          onClick={() => setShow(!show)}
-        >
-          <AddIcon />
-        </Fab>
       {/* <Timetable/> */}
       <ul className="list-container">
         {props.data.length > 0 ? props.data.map((course, idx) => {
@@ -133,7 +126,13 @@ const Dashboard = props => {
           )
         }) : null}
       </ul>
-
+      <Fab
+          color="secondary"
+          className={classes.addButton}
+          onClick={() => setShow(!show)}
+        >
+          <AddIcon />
+        </Fab>
     </>
   );
 };
