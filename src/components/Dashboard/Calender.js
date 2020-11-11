@@ -12,6 +12,7 @@ import {
   MonthView,
   WeekView,
   DayView,
+  DateNavigator,
   ViewSwitcher,
   Appointments,
   AppointmentTooltip,
@@ -495,6 +496,7 @@ class Calender extends React.PureComponent {
           <Appointments />
           <AppointmentTooltip showOpenButton showCloseButton showDeleteButton />
           <Toolbar />
+          <DateNavigator />
           <ViewSwitcher />
           <AppointmentForm
             overlayComponent={this.appointmentForm}

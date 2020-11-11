@@ -7,6 +7,7 @@ import AddCourse from './AddCourse';
 import AddChapter from './AddChapter';
 import { customizedTemplate } from './createTemplate';
 import { Label } from '@material-ui/icons';
+
 import Divider from '@material-ui/core/Divider';
 import { withSnackbar } from 'notistack';
 import './templateSelector.scss';
@@ -200,4 +201,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { setTemp, handleCourse, handleChapter };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(TemplateCreator));
+export default connect(mapStateToProps, mapDispatchToProps)(TemplateCreator);

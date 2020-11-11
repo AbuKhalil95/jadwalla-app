@@ -28,7 +28,7 @@ export default (state = initialState, action) => {
 
   switch (type) {
     case 'TOGGLE-SESSION':
-      console.log('Toggles session');
+      console.log('Toggles session', payload);
       let today;
       if (!state.active) {
         date.start = dateObj;
@@ -37,7 +37,7 @@ export default (state = initialState, action) => {
         today = initialState.day;
         today.date = new Date();
         today.lessonId = payload[0];
-        today.lessonId = payload[1];
+        today.lesson = payload[1];
         // return {...state, active: !state.active, day: today};
 
       } else if(state.active) {

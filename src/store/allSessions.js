@@ -7,17 +7,16 @@ import cookie from 'js-cookie';
 const initialState = {};
 
 export default (state = initialState, action) => {
-    const { type, payload } = action;
-    console.log('allllllllllllllll sessions state', state)
-    switch (type) {
-        case 'GET-SESSIONS':
-            return payload;
+  const { type, payload } = action;
+  console.log('allllllllllllllll sessions state', state)
+  switch (type) {
+    case 'GET-SESSIONS':
+      return payload;
 
-        default:
-            return state;
-    }
+    default:
+      return state;
+  }
 };
-
 
 export const getSessions = e => {
   let token = cookie.get('auth');

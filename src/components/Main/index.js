@@ -7,6 +7,7 @@ import Home from './home.js';
 import TemplateCreator from '../TemplateList/TemplateCreator.js';
 import TemplateSelector from '../TemplateList/TemplateSelector.js';
 import Notifications from '../Notification/Notifications';
+import Profile from '../profile/profile';
 
 function Main() {
     return (
@@ -22,6 +23,10 @@ function Main() {
 
                 <Route exact path="/signup">
                     <SignUp />
+                </Route>
+
+                <Route exact path="/profile">
+                    <Profile/>
                 </Route>
 
                 <Route exact path="/dashboard">
@@ -46,9 +51,7 @@ function Main() {
                 </Route>
                 <Route exact path="/chat">
                 </Route>
-                <Route exact path="/yahya">
-                    {/* <Yahya/> */}
-                </Route>
+
                 <Route>404 Page Not Found!</Route>
             </Switch>
         </main>

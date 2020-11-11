@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { SocialIcon } from 'react-social-icons';
 import { handleSignUp } from '../../store/auth';
-import { Button, FormGroup, FormControl, FormLabel, FormCheck, Form, Container, Row, Col, Card } from "react-bootstrap";
+import { Button, FormGroup, FormControl, FormLabel, FormCheck, Form , Container, Row, Col } from "react-bootstrap";
 import './auth.scss';
 import signUpImg from '../../images/signup-image.jpg';
 import { Link, withRouter } from "react-router-dom";
@@ -22,71 +22,65 @@ const Signup = props => {
 
   return (
     <>
-      <Card>
-        <Container className={'siucon'}>
-          <Row>
-            <Col>
-              <h1>Sign Up</h1> <br />
-              <Form onSubmit={handleSubmit}>
-                <FormGroup controlId="username" bsSize="large">
-                  <FormLabel>Username</FormLabel>
-                  <FormControl
-                    autoFocus
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                  />
-                </FormGroup>
-                <FormGroup controlId="email" bsSize="large">
-                  <FormLabel>Email</FormLabel>
-                  <FormControl
-                    autoFocus
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                  />
-                </FormGroup>
-                <FormGroup controlId="password" bsSize="large">
-                  <FormLabel>Password</FormLabel>
-                  <FormControl
-                    type="password"
-                    name="password" placeholder="Password"
-                  />
-                </FormGroup>
-                <FormGroup>
-                <Form.Check inline type="radio"
-                  label="Student"
-                  value="student"
-                  name="role" />
-                <Form.Check inline type="radio"
-                  label="Teacher"
-                  value="teacher"
-                  name="role" />
+   <Container>
+  <Row>
+    <Col>
+    <h1>Sign Up</h1> <br/>
+    <Form onSubmit={handleSubmit}>
+        <FormGroup controlId="username" size="large">
+          <FormLabel>Username</FormLabel>
+          <FormControl
+            autoFocus
+            type="text"
+            name="username"
+            placeholder="Username"
+          />
+        </FormGroup>
+        <FormGroup controlId="email" size="large">
+          <FormLabel>Email</FormLabel>
+          <FormControl
+            autoFocus
+            type="email"
+            name="email"
+            placeholder="Email"
+          />
+        </FormGroup>
+        <FormGroup controlId="password" size="large">
+          <FormLabel>Password</FormLabel>
+          <FormControl
+            type="password"
+            name="password" placeholder="Password"
+          />
+        </FormGroup>
+        <Form.Check type="radio"
+          label="Student"
+          value="student"
+          name="role" />
+        <Form.Check type="radio"
+          label="Teacher"
+          value="teacher"
+          name="role" />
 
-                </FormGroup>
-                
-
-                <Button block bsSize="large" type="submit">
-                  SignUp
+        <Button block size="large" type="submit">
+          SignUp
         </Button>
-                <br />
-                {/* <a>Or sign Up using Gmail <SocialIcon network="google" style={{ height: 35, width: 35 }} /></a> */}
+        <br />
+        {/* <a>Or sign Up using Gmail <SocialIcon network="google" style={{ height: 35, width: 35 }} /></a> */}
+      </Form>
 
-              </Form>
-
-            </Col>
-            <Col>
-            <br /> <br/> <br/>
-              <div className="signup-image">
-                <img src={signUpImg} alt="sing up" />  <br /> <br/>
-                <a href="/signin" className="signup">I am already member</a>
-              </div>
-
-            </Col>
-          </Row>
-
-        </Container>
-      </Card>
+    </Col>
+    <Col>
+    <div className="signup-image">
+        <img src={signUpImg}  alt="sing up"/><br/>
+        <Link to='./signin' className="signup">I am already a member</Link>
+    </div>
+    
+    </Col>
+  </Row>
+  
+</Container>
+      
+     
 
     </>
   );
