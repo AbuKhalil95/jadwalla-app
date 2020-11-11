@@ -1,3 +1,13 @@
+import { green, deepOrange, lightBlue, yellow, purple } from "@material-ui/core/colors";
+
+export const priorities = [
+  { id: 1, text: "Physics", color: green },
+  { id: 2, text: "Mathematics", color: lightBlue },
+  { id: 3, text: "Chemistry", color: deepOrange },
+  { id: 4, text: "Biology", color: yellow },
+  { id: 5, text: "English", color: purple },
+];
+
 export const appointments = [
   {
     title: 'Website Re-Design Plan',
