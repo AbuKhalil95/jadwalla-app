@@ -74,130 +74,129 @@ const TemplateCreator = props => {
     }
 
     const styles = {
-        body :{
+        body: {
             background: 'rgba(0, 0, 0, 0.5)',
             backgroundImage: 'url(./../../images/study.jpg)',
-          } ,
+        },
     }
 
     return (
-        <> 
-        <div className="ctcf" >
-            <Card className="card-form">
-                <Card.Body>
-                    <h3>TEMPLATE DETAILS</h3>
-                    <Divider dark /> <br/>
-                    <div className="instructions">
-                        Jadwaleh gives you the ability to create and publish a customized template, where you can
-                        share your study plan with other students with the same background. In order to create a new 
-                        template that matches your needs and interests you should follow the following steps: <br/>
-                        1. Choose a unique name for your template and make sure that it is set. <br/>
-                        2. Add Course/s and Chapter/s that matches you area of study. <br/>
-                    </div> <br/> <br/>
-                    <Form onSubmit={handleSubmit} inline className={'nameForm'}>
-                        <Form.Group as={Row} controlId="TEMPLATENAME">
-                            <Form.Label column sm="4">
-                                Template Name*
+        <>
+            <div className="ctcf" >
+                <Card className="card-form">
+                    <Card.Body>
+                        <h3>TEMPLATE DETAILS</h3>
+                        <Divider dark /> <br />
+                        <div className="instructions">
+                            Jadwaleh gives you the ability to create and publish a customized template, where you can
+                            share your study plan with other students with the same background. In order to create a new
+                        template that matches your needs and interests you should follow the following steps: <br />
+                        1. Choose a unique name for your template and make sure that it is set. <br />
+                        2. Add Course/s and Chapter/s that matches you area of study. <br />
+                        </div> <br /> <br />
+                        <Form onSubmit={handleSubmit} inline className={'nameForm'}>
+                            <Form.Group as={Row} controlId="TEMPLATENAME">
+                                <Form.Label column sm="4">
+                                    Template Name*
                             </Form.Label>
-                            <Col sm="8">
-                                <InputGroup className="mb-3" bsSize="large">
-                                    <FormControl
-                                        autoFocus
-                                        type="text"
-                                        name="tempName"
-                                        placeholder="TEMPLATE NAME"
-                                        required
-                                    />
-                                    <InputGroup.Append>
-                                        <Button type="submit" variant="outline-primary">SET</Button>
-                                    </InputGroup.Append>
-                                </InputGroup>
-                            </Col>
-                        </Form.Group>
+                                <Col sm="8">
+                                    <InputGroup className="mb-3" bsSize="large">
+                                        <FormControl
+                                            autoFocus
+                                            type="text"
+                                            name="tempName"
+                                            placeholder="TEMPLATE NAME"
+                                            required
+                                        />
+                                        <InputGroup.Append>
+                                            <Button type="submit" variant="outline-primary">SET</Button>
+                                        </InputGroup.Append>
+                                    </InputGroup>
+                                </Col>
+                            </Form.Group>
 
-                    </Form>
-                    <br />
-                    <Button className="submit" variant="dark" onClick={handleShow}>ADD A COURSE</Button>
-                            <Button className="submit" disabled={enable} onClick={createTemplate}>CREATE TEMPLATE</Button>
-                    {props.courses ? props.courses.map((course, i) => {
-                        return (
-                            <Card>
-                                <Container key={i}>
-                                <br/>
-                                    <Row>
-                                        <Col>
-                                            <h5>{course.name}</h5>
-                                        </Col>
-                                        <Col>
-                                            <Button variant="link" onClick={() => handleShowCh(i)}>Add Chapter</Button>
-                                        </Col>
-                                    </Row>
-                                    {/* <br /> */}
-                                    <Row>
+                        </Form>
+                        <br />
+                        <Row className="submitRow">
+                        <Button className="submit" variant="dark" onClick={handleShow}>ADD A COURSE</Button>
+                        <Button className="submit" disabled={enable} onClick={createTemplate}>CREATE TEMPLATE</Button>
+                        </Row>
+                        {props.courses ? props.courses.map((course, i) => {
+                            return (
+                                <Card>
+                                    <Container key={i}>
+                                        <br />
+                                        <Row>
+                                            <Col>
+                                                <h5>{course.name}</h5>
+                                            </Col>
+                                            <Col>
+                                                <Button variant="link" onClick={() => handleShowCh(i)}>Add Chapter</Button>
+                                            </Col>
+                                        </Row>
+                                        {/* <br /> */}
+                                        <Row>
 
-                                        {course.chapters.length > 0 ? course.chapters.map((chapter, j) => {
-                                            return (
+                                            {course.chapters.length > 0 ? course.chapters.map((chapter, j) => {
+                                                return (
 
-                                                <Container key={j}>
-                                                    <br />
-                                                    <Row>
-                                                        <Col>
-                                                            <h6>chapter {j + 1} : {chapter.name}</h6>
-                                                        </Col>
-                                                        <Col>
-                                                            <h6>Estimated Time : {chapter.duration} hrs</h6>
-                                                        </Col>
-                                                    </Row>
-                                                    <Divider light />
-                                                </Container>
+                                                    <Container key={j}>
+                                                        <br />
+                                                        <Row>
+                                                            <Col>
+                                                                <h6>chapter {j + 1} : {chapter.name}</h6>
+                                                            </Col>
+                                                            <Col>
+                                                                <h6>Estimated Time : {chapter.duration} hrs</h6>
+                                                            </Col>
+                                                        </Row>
+                                                        <Divider light />
+                                                    </Container>
 
-                                            );
+                                                );
 
-                                        }) : null}
-                                    </Row>
-                                    <Divider dark />
-                                    <br />
-                                </Container>
-                            </Card>
+                                            }) : null}
+                                        </Row>
+                                        <Divider dark />
+                                        <br />
+                                    </Container>
+                                </Card>
 
-                        );
-                    }) : null}
+                            );
+                        }) : null}
 
-                    <Modal show={showCh} onHide={handleCloseCh} >
-                        <Modal.Header closeButton>
-                            <Modal.Title>Chapter Details</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>Add a new chapter:
+                        <Modal show={showCh} onHide={handleCloseCh} >
+                            <Modal.Header closeButton>
+                                <Modal.Title>Chapter Details</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>Add a new chapter:
                                 <AddChapter onSubmit={onChapterSubmit} />
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={handleCloseCh}>
-                                Close
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="secondary" onClick={handleCloseCh}>
+                                    Close
                                 </Button>
-                        </Modal.Footer>
-                    </Modal>
+                            </Modal.Footer>
+                        </Modal>
 
-                    <Modal show={show} onHide={handleClose}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Course Details</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>Add a new course:
+                        <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>Course Details</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>Add a new course:
                         <AddCourse onSubmit={onCourseSubmit} />
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={handleClose}>
-                                Close
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="secondary" onClick={handleClose}>
+                                    Close
                         </Button>
-                        </Modal.Footer>
-                    </Modal>
+                            </Modal.Footer>
+                        </Modal>
 
-                    <br />
- 
-                        {/* <Row className="text-center"> */}
-                            
-                        {/* </Row> */}
+                        <br />
+
                     </Card.Body>
-            </Card>
+                </Card>
             </div>
         </>
     );
