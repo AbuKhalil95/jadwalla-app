@@ -38,12 +38,13 @@ const Home = props => {
         </div>
         <div className='session'>
           <Session/>
-          <PastSessions/>
+          {/* <PastSessions/> */}
         </div>
-        {/* <div className='blankSpace'>
-        </div> */}
+        <div className='blankSpace'>
+        </div>
       </div>  
     </div>
+
   )
 }
 
