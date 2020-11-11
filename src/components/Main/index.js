@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import SignIn from '../Auth/Signin';
 import { connect } from 'react-redux'
@@ -14,16 +14,14 @@ import TemplateCreator from '../TemplateList/TemplateCreator.js';
 import TemplateSelector from '../TemplateList/TemplateSelector.js';
 import Notifications from '../Notification/Notifications';
 import Profile from '../profile/profile';
+import cookie from 'js-cookie';
 
 function Main(props) {
-    useEffect(() => {
-        console.log('props.auth.name', props.auth.name)
-    }, []);
     return (
         <main>
             <Switch>
                 <Route exact path="/">
-                    {props.auth.name ? <Home /> : <Landing />}
+                    {cookie.get('userId') ? <Home /> : <Landing />}
                 </Route>
                 <Route exact path="/signin">
                     <SignIn />
@@ -46,7 +44,7 @@ function Main(props) {
                 <Route exact path="/Notifications">
                     <Notifications />
                 </Route>
-                <Route exact path="/my-wall">
+                <Route exact path="/myWall">
                     <MyWall />
                 </Route>
                 <Route path="/wall/">
@@ -64,6 +62,6 @@ function Main(props) {
     )
 }
 const mapStateToProps = state => ({
-    auth: state.auth,
+    username: state.username,
 })
 export default connect(mapStateToProps)(Main); 

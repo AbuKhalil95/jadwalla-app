@@ -74,7 +74,7 @@ const Header = (props) => {
               <>
                 <MenuButton iconType={NotificationsNoneIcon} type={'notifications'} content={['One Notif']} />
                 <MenuButton iconType={AccountCircleIcon} type={'profile'}
-                  content={[['Profile', '/profile'], ['Dashboard', '/dashboard'], ['Settings', '/settings']]} />
+                  content={[['Profile', '/profile'], ['My Wall', '/myWall'], ['Chat', '/Chat'], ['Dashboard', '/dashboard'], ['Settings', '/settings']]} />
               </>
             )}
           </div>

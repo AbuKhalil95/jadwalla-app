@@ -2,15 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { handleSignIn } from '../../store/auth';
-import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col, Form, Card } from "react-bootstrap";
+import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col, Card, Form } from "react-bootstrap";
 import './auth.scss';
 import { Redirect } from 'react-router-dom';
 import signUpImg from '../../images/signin-image.jpg';
 import { Link, withRouter } from "react-router-dom";
 import { withSnackbar } from 'notistack';
-import bg from './../../images/study.jpg';
-import './auth.scss';
-
 
 const Signin = props => {
   const [redirect, setRedirect] = useState(false);
@@ -61,15 +58,17 @@ const Signin = props => {
                   Login
                 </Button>
               </form>
+
             </Col>
             <Col>
-              <div className="signin-image">
+              <div class="signin-image">
                 <img src={signUpImg} alt="sing in" /> <br /> <br />
-                <a href="/signup" className="signin">Not a user? Create an account</a>
+                <a href="/signup" class="signin">Not a user? Create an account</a>
 
               </div>
             </Col>
           </Row>
+
         </Container>
       </Card>
     </>
@@ -82,4 +81,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { handleSignIn };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signin);
+export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(Signin));
