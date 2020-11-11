@@ -18,7 +18,7 @@ const WallGetter = (socket) => {
             let postsArray = payload.map(val => {
                 return outputMessage(val);
             });
-            console.log('postsArray', postsArray)
+            console.log('postsArray', postsArray.reverse())
 
             setPosts([...postsArray]);
             setPostsSpinning(false);

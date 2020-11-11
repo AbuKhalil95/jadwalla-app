@@ -20,7 +20,7 @@ const Content = props => {
                     {postsSpinning ? <Spinner animation="border" /> : null} <span>My Wall</span>
 
                 </Row>
-                <Row className="justify-content-md-center mt-3">
+                <Row className="justify-content-md-center mt-3" style={{ textAlign: 'center' }}>
                     <Card style={{ width: '18rem' }} >
                         <Card.Header>Share the link with your <Badge variant="primary">Friends</Badge></Card.Header>
                         <Card.Body>
