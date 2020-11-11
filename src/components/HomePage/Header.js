@@ -9,12 +9,12 @@ const Header = props => {
     return (
         <>
             <Col className="self-align-center text-light p-5" style={{ textAlign: "center" }}>
-                <h1 style={{ paddingTop: "20vh" }}>Lorem ipsum dolor, sit amet </h1>
-                <p style={{ textAlign: "center" }} className="p-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi ipsum dolorum esse adipisci iusto. Sequi odio.</p>
+                <h1 style={{ paddingTop: "20vh" }}>Become your most unstoppable self </h1>
+                <p style={{ textAlign: "center" }} className="p-3">Master any subject, one success at a time.</p>
                 <Button variant="danger">Get Started</Button>
             </Col>
             <Col>
-                <Container >
+                <Container className="text-center">
                     <Carousel >
                         <Carousel.Item interval={3000} className='h-75'>
                             <Row className=' text-dark p-1' style={{ 'background-color': '#e9ecef' }}>
