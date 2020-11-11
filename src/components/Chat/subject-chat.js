@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 import './chat.scss'
 
@@ -29,7 +30,9 @@ const MyChat = props => {
                                 <h1>Users</h1>
                                 {users.map((detail, index) => {
                                     return (
-                                        <h4>{detail}</h4>
+                                        <ListGroup>
+                                            <ListGroup.Item className="text-uppercase" variant="success" style={{ width: 'auto' }}>{detail}</ListGroup.Item>
+                                        </ListGroup>
                                     )
                                 })}
                             </Col>
@@ -41,23 +44,24 @@ const MyChat = props => {
                                 <div className="scrollMessage">
                                     {oldMassages.map((detail, index) => {
                                         return (
-                                            <Alert variant="success">
-                                                <Alert.Heading style={{ textAlign: "left" }}>{detail.username}</Alert.Heading>
-                                                <p style={{ textAlign: "left" }}>{detail.text}</p>
-                                                <hr />
-                                                <p style={{ textAlign: "left" }}>{detail.time}</p>
-                                            </Alert>
+                                            <Card border="success" style={{ width: 'auto' }} variant="success">
+                                                <Card.Body>
+                                                    <Card.Title className="text-uppercase" style={{ textAlign: "left" }}>{detail.username}</Card.Title>
+                                                    <Card.Text style={{ textAlign: "left" }}>{detail.text}</Card.Text>
+                                                    <i style={{ textAlign: "left" }}>{detail.time}</i>
+                                                </Card.Body>
+                                            </Card>
                                         )
                                     })}
                                     {newMessages.map((detail, index) => {
                                         return (
-                                            <Alert variant="info">
-                                                {/* <div class="chat-messages"></div> */}
-                                                <Alert.Heading style={{ textAlign: "left" }}>{detail.username}</Alert.Heading>
-                                                <p style={{ textAlign: "left" }}>{detail.text}</p>
-                                                <hr />
-                                                <p style={{ textAlign: "left" }}>{detail.time}</p>
-                                            </Alert>
+                                            <Card border="primary" style={{ width: 'auto' }} variant="success">
+                                                <Card.Body>
+                                                    <Card.Title className="text-uppercase" style={{ textAlign: "left" }}>{detail.username}</Card.Title>
+                                                    <Card.Text style={{ textAlign: "left" }}>{detail.text}</Card.Text>
+                                                    <i style={{ textAlign: "left" }}>{detail.time}</i>
+                                                </Card.Body>
+                                            </Card>
                                         )
                                     })}
                                 </div>

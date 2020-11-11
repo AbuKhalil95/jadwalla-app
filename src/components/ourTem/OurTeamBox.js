@@ -11,9 +11,9 @@ export const OurTeamBox = (props) => {
                 <div class="member_img">
                     <Image src={img} alt="our_team" rounded />
                     <div class="social_media">
-                        <div class="facebook item"><a href={faceLink}><i class="fab fa-facebook-f"></i></a></div>
-                        <div class="twitter item"><a href={gitHubLink} target="_blank" ><i class="fab fa-github"></i></a></div>
                         <div class="instagram item"><i class="fab fa-instagram"></i></div>
+                        <div class="github item"><a href={gitHubLink} target="_blank" ><i class="fab fa-github"></i></a></div>
+                        <div class="facebook item"><a href={faceLink}><i class="fab fa-facebook-f"></i></a></div>
                     </div>
                 </div>
 

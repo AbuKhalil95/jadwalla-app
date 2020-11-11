@@ -10,7 +10,7 @@
 }
 
 .body{
-  background: #FFFFFF;
+  background: #FFF8DC;
   display: flex;
   width: 100%;
 flex-direction: column;
@@ -22,14 +22,15 @@ overflow: auto;
 .body h1{
   font-family: 'Satisfy', cursive;
   font-size: 60px;
-   color: rgb(43, 6, 255);
+   color: rgb(205,133,63);
    align-self: center;
-  padding: 12px; 
+   margin: 25px;
+  padding: 25px; 
   }
  .body h1:hover{
-  color: #2a06df;
+  color: rgb(139,69,19);
   border-radius: 50%;
-  background-color: rgba(90, 47, 247, 0.24);
+  background-color: rgba(222, 184, 135, 0.219);
   width: auto;
   transition: 0.3s;
    font-size: 75px;
@@ -41,6 +42,7 @@ overflow: auto;
     font-size: 14px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(0, 0, 0);
+    margin-bottom: 25;
 
 }
 
@@ -59,15 +61,16 @@ overflow: auto;
 .body h2{
   font-family: 'Satisfy', cursive;
   font-size: 45px;
-  color: rgb(43, 6, 255);
+  color:rgb(205,133,63);
   align-self: center;
 padding: 16px;
+margin-top: 50px;
   
 }
 .body h2:hover{
-  color: #2a06df;
+  color: rgb(139,69,19);
   border-radius: 50%;
-  background-color: rgba(90, 47, 247, 0.24);
+  background-color: rgba(222, 184, 135, 0.219);
   width: auto;
   transition: 0.3s;
    font-size: 60px;
@@ -78,13 +81,14 @@ padding: 16px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin: 35px;
 }
 
 .our_team .team_member{
   width: 250px;
   height: 400px;
   margin: 5px;
-  background: rgba(80, 90, 240, 0.918);
+  background: 	#DEB887;
   border-radius: 10%;
   padding: 20px 10px;
 }
@@ -118,7 +122,7 @@ padding: 16px;
 
 .our_team .team_member span{
   font-size: 10px;
-  color: #bfc0fa;
+  color: #FFF8DC;
 }
 
 .our_team .team_member p{
@@ -134,7 +138,7 @@ padding: 16px;
   position: absolute;
   top: 5px;
   left: 5px;
-  background: rgba(0,0,0,0.65);
+  background: rgba(0, 0, 0, 0.212);
   width: 95%;
   height: 95%;
   border-radius: 2%;
@@ -146,12 +150,18 @@ padding: 16px;
 }
 
 .our_team .team_member .member_img .social_media .item{
-  margin: 0 10px;
+  
+  margin: auto;
 }
 
 .our_team .team_member .member_img .social_media .fab{
-  color: #2a06df;
-  font-size: 20px;
+  position: absolute;
+  bottom: 0;
+  color: #ffffff;
+  font-size: 20px;  
+  padding-bottom: 8px;
+  border-radius: 50%;
+  
 }
 
 .our_team .team_member .member_img:hover .social_media{

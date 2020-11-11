@@ -18,7 +18,7 @@ const OurTeam = props => {
                     img={"https://ca.slack-edge.com/TNGRRLUMA-U013538GSAJ-b9f3777431e9-512"}
                     name={'Ashjan Albarqi'}
                     des={'Full stack web developer, with background in communications Engineering.'}
-                    position={'CEO'}
+                    position={'Team Member'}
                     faceLink={""}
                     gitHubLink={"https://github.com/AAlbarqi"}
                 />
@@ -26,7 +26,7 @@ const OurTeam = props => {
                     img={"https://ca.slack-edge.com/TNGRRLUMA-U011NPH9GAZ-808c81d1e1e9-512"}
                     name={'Osama Hanoun'}
                     des={'A Javascript full-stack web developer with CodeFellows.  B.Sc degree in Civil Engineering from the University of Jordan.'}
-                    position={'Vice President'}
+                    position={'Vice Team Leader'}
                     faceLink={""}
                     gitHubLink={"https://github.com/OsamaHanoun"}
                 />
@@ -42,7 +42,7 @@ const OurTeam = props => {
                     img={"https://media-exp1.licdn.com/dms/image/C5603AQEDKIeKhWRkJQ/profile-displayphoto-shrink_200_200/0?e=1610582400&v=beta&t=TiT18WfR1x4qwNW8el6iK7MgF-vlyTfZLfxzdTIeEOU"}
                     name={'Ahmad AlHabrawi'}
                     des={'Full Stack Web Developer In JavaScript with Electrical Engineering  Background '}
-                    position={'SEO CONSULTANT'}
+                    position={'Team Member'}
                     faceLink={"https://web.facebook.com/mamdouh.hubrawee"}
                     gitHubLink={"https://github.com/ahmadmamdouh1995"}
                 />

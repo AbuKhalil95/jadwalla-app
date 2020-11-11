@@ -6,25 +6,24 @@ import './Footer.scss';
 function Footer() {
   return (
     <>
-      <footer class="flex-rw">
-
-        <section class="footer-social-section flex-rw">
-          <span class="footer-social-overlap footer-social-connect">CONNECT<span class="footer-social-small">with</span>US</span>
-          <span class="footer-social-overlap footer-social-icons-wrapper">
-            <a href="" class="generic-anchor" target="_blank" title="GitHub" ><i class="fa fa-github"></i></a>
-            <a href="" class="generic-anchor" target="_blank" title="Facebook" ><i class="fa fa-facebook"></i></a>
-            <a href="" class="generic-anchor" target="_blank" title="Twitter" ><i class="fa fa-twitter"></i></a>
-            <a href="" class="generic-anchor" target="_blank" title="Instagram" ><i class="fa fa-instagram"></i></a>
-            <a href="" class="generic-anchor" target="_blank" title="Youtube" ><i class="fa fa-youtube"></i></a>
-            <a href="" class="generic-anchor" target="_blank" title="GooglePlus" ><i class="fa fa-google-plus"></i></a>
-          </span>
-        </section>
-        <section class="footer-bottom-section flex-rw">
-          <div class="footer-bottom-wrapper">
-            <i class="fa fa-copyright" role="copyright">
-            </i> 2020 Jadwaleh in <address class="footer-address" role="company address">Jordan,Amman</address><span class="footer-bottom-rights"> - All Rights Reserved - </span>
+      <footer class="page-footer font-large cyan darken-3 unique-color-dark">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 py-3">
+              <h4 class=" font-weight-bold contact-us text-center py-3">Contact Us </h4>
+              <div class="mb-15 text-center">
+                <a class="fb-ic"><i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
+                <a class="tw-ic"><i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
+                <a class="gplus-ic"><i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
+                <a class="li-ic"><i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
+                <a class="ins-ic"><i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
+                <a class="pin-ic"><i class="fab fa-github fa-lg white-text fa-2x"></i></a>
+              </div>
+            </div>
           </div>
-        </section>
+        </div>
+        <div class="footer-copyright text-center py-3"> All Copyright Reserved © 2020 : <a href="" target="_blank"> Jadwaleh.com </a>
+        </div>
       </footer>
     </>
   );
