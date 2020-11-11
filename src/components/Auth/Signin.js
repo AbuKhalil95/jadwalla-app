@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
-import './auth.scss';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { handleSignIn } from '../../store/auth';
 import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col, Card, Form } from "react-bootstrap";
+import './auth.scss';
 import { Redirect } from 'react-router-dom';
 import signUpImg from '../../images/signin-image.jpg';
 import { withSnackbar } from 'notistack';
 
-const Signin = (props) => {
+const Signin = props => {
   const [redirect, setRedirect] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,7 +54,6 @@ const Signin = (props) => {
                 <Form.Group controlId="formBasicCheckbox">
                   <Form.Check type="checkbox" label="Remember me" checked />
                 </Form.Group>
-​
                 <Button block bsSize="large" type="submit" onClick={handleClick({ variant: 'success', message: 'Welcome back' })}>
                   Login
                 </Button>
@@ -80,4 +79,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { handleSignIn };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(Signin))
+export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(Signin));
