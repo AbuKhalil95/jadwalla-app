@@ -8,7 +8,6 @@ import signUpImg from '../../images/signin-image.jpg';
 import { Link, withRouter } from "react-router-dom";
 import { withSnackbar } from 'notistack';
 const Signin = props => {
-  const [redirect, setRedirect] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const signInValues = {
@@ -16,7 +15,7 @@ const Signin = props => {
       password: await e.target.password.value,
     };
     await props.handleSignIn(signInValues);
-    setRedirect(true);
+    window.location.href = "/";
   }
   const handleClick = button => () => {
     window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
@@ -25,6 +24,7 @@ const Signin = props => {
   };
   return (
     <>
+      
       <div className="signindiv" >
         <Card className="cardsi">
           <Container className='siucon'>

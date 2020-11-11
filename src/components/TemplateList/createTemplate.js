@@ -41,13 +41,13 @@ const getSciTemplate = async () => {
     return template;
 };
 
-export const createSciTemplate = async () => {
-    let sciTemplate = await getSciTemplate();
+export const createSciTemplate = async (template) => {
+    let sciTemplate = template;
     let token = cookie.get('auth');
     let student_id = cookie.get('userId');
     let student_name = cookie.get('username');
 
-    
+    console.log('sciTemplate.name', sciTemplate.name);
     sciTemplate.student_id = student_id;
     sciTemplate.name += ` for ${student_name}`;
     delete sciTemplate.ownerId;

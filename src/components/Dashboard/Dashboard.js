@@ -12,6 +12,7 @@ import { getSessions } from '../../store/allSessions';
 import Fab from "@material-ui/core/Fab";
 import { makeStyles } from '@material-ui/core/styles';
 import AddIcon from "@material-ui/icons/Add";
+import { withSnackbar } from 'notistack';
 
 const useStyles = makeStyles((theme) => ({
   addButton: {
@@ -97,6 +98,7 @@ const Dashboard = props => {
   ];
   return (
     <>
+    {console.log('props.total', props.total)}
       {/* <Calender data={sessions}/> */}
       <div style={{display: show ? 'block' : 'none'}}>
         <Calender data={sessions} />
@@ -145,4 +147,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { getDash, getSessions };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(Dashboard));

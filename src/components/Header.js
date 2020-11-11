@@ -75,7 +75,7 @@ const Header = (props) => {
             </IconButton>
             {auth && (
               <>
-                <MenuButton iconType={NotificationsNoneIcon} type={'notifications'} content={['One Notif']} />
+                {/* <MenuButton iconType={NotificationsNoneIcon} type={'notifications'} content={['One Notif']} /> */}
                 <MenuButton iconType={AccountCircleIcon} type={'profile'}
                   content={[['Profile', '/profile'], ['My Wall', '/myWall'], ['Chat', '/Chat'], ['Dashboard', '/dashboard'], ['Settings', '/settings']]} />
               </>
