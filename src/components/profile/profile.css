@@ -1,3 +1,24 @@
 .userCard {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 5em;
+  border-radius: 2em;
+  border: black;
+}
+
+.userProfile {
+  /* padding: 20em; */
+  height: 10em;
+  background-image: url(./../../images/placeholder_avatar.png) !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 1em;
   
+}
+
+.username {
+  font-size: 2em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 1em;
 }

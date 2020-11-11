@@ -27,19 +27,23 @@ const Home = props => {
   }, [props.auth, props.history.name])
 
   return (
-    <>
+    <div className='sectionGrid'>
+      <div className='backgroundImage'/>
 
-      <div className='sectionGrid'>
-        <div className='profile'>
-          <Profile/>
-        </div>
-        <div className='heatmap'>
-          <Heatmap/>
-        </div>
-          <div className='session'>Continue the good progress!<br/><Session/>
-        </div>
-      </div>  
-    </>
+      <div className='profile'>
+        <Profile/>
+      </div>
+      <div className='heatmap'>
+        <Heatmap/>
+      </div>
+      <div className='session'>
+        <Session/>
+      </div>
+      <div className='blankSpace'>
+        
+      </div>
+      
+    </div>  
   )
 }
 

@@ -69,6 +69,9 @@ export const handleSignIn = e => {
 export const handleLogOut = () => {
   return async dispatch => {
     cookie.remove("auth");
+    cookie.remove("userId");
+    cookie.remove("username");
+
     dispatch({
       type: 'SET_LOGOUT',
       payload: {},

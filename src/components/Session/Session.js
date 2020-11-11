@@ -105,11 +105,6 @@ const Session = props => {
 
   return (
     <>
-      <br/>
-        Started at {props.history.startDate}
-      <br/>
-        {props.history.name}
-      <br/>
       <Button variant="contained" onClick={handleToggle} color={props.session.active ? "secondary" : "primary"} disabled={!lesson}>
         {props.session.active ? ("END") : ("START")}
       </Button>
