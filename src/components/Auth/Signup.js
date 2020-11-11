@@ -65,16 +65,15 @@ const Signup = props => {
           SignUp
         </Button>
         <br />
-        <a>Or sign Up using Gmail <SocialIcon network="google" style={{ height: 35, width: 35 }} /></a>
-
+        {/* <a>Or sign Up using Gmail <SocialIcon network="google" style={{ height: 35, width: 35 }} /></a> */}
       </Form>
 
     </Col>
     <Col>
     <div className="signup-image">
-          <img src={signUpImg}  alt="sing up"/><br/>
-          <Link to='./signin' className="signup">I am already a member</Link>
-      </div>
+        <img src={signUpImg}  alt="sing up"/><br/>
+        <Link to='./signin' className="signup">I am already a member</Link>
+    </div>
     
     </Col>
   </Row>

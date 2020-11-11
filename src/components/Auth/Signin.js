@@ -48,8 +48,6 @@ const Signin = props => {
           Login
         </Button>
       </form>
-
-
     </Col>
     <Col>
     <div className="signin-image">

@@ -23,7 +23,8 @@ const AddCourse = props => {
                         autoFocus
                         type="number"
                         name="expectedHours"
-                        defaultValue={(props.course && props.course.expectedHours) || "EXPECTED HOURS"}
+                        placeholder =" HOURS"
+                        min={0}
                     />
                 </FormGroup>
 
@@ -33,7 +34,8 @@ const AddCourse = props => {
                         autoFocus
                         type="number"
                         name="noOfChapters"
-                        defaultValue={(props.course && props.course.noOfChapters) || "Number of chapters"}
+                        min={0}
+                        placeholder = "Number of chapters"
                     />
                 </FormGroup>
 
