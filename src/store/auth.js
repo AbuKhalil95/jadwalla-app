@@ -25,7 +25,8 @@ export default (state = initialState, action) => {
         ...state,
         userId: payload.user._id,
         username: payload.user.username,
-        token: payload.token
+        token: payload.token,
+        logged: true,
       };
     default:
       return state;
@@ -51,7 +52,7 @@ export const handleSignIn = e => {
     cache: 'no-cache',
     headers: { 'Authorization': `Basic ${encodedData}` },
   };
-  
+
   return async dispatch => {
     let res = await axios.post(`https://jadwalla.herokuapp.com/api/v1/signin`, e, options);
     console.log(res)
@@ -69,6 +70,8 @@ export const handleSignIn = e => {
 export const handleLogOut = () => {
   return async dispatch => {
     cookie.remove("auth");
+    cookie.remove("userId");
+    cookie.remove("username");
     dispatch({
       type: 'SET_LOGOUT',
       payload: {},
