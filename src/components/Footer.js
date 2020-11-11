@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 function Footer() {
   return (
 
-    <Card.Footer style={{ color: 'white', background: 'blue' }} as="h5" className="fixed-bottom text">All Rights Reserved Khobaraa @ 2020</Card.Footer>
+    <Card.Footer style={{ color: 'white', background: 'blue' }} as="h5" >All Rights Reserved Khobaraa @ 2020</Card.Footer>
 
   );
 };

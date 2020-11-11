@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import Card from 'react-bootstrap/Card';
 
 import './chat.scss'
 
@@ -44,18 +45,18 @@ const MyChat = props => {
                                                 <Alert.Heading style={{ textAlign: "left" }}>{detail.username}</Alert.Heading>
                                                 <p style={{ textAlign: "left" }}>{detail.text}</p>
                                                 <hr />
-                                                <p style={{ textAlign: "left" }}>Time: {detail.time}</p>
+                                                <p style={{ textAlign: "left" }}>{detail.time}</p>
                                             </Alert>
-
                                         )
                                     })}
                                     {newMessages.map((detail, index) => {
                                         return (
-                                            <Alert variant="danger">
+                                            <Alert variant="info">
+                                                {/* <div class="chat-messages"></div> */}
                                                 <Alert.Heading style={{ textAlign: "left" }}>{detail.username}</Alert.Heading>
                                                 <p style={{ textAlign: "left" }}>{detail.text}</p>
                                                 <hr />
-                                                <p style={{ textAlign: "left" }}>Time: {detail.time}</p>
+                                                <p style={{ textAlign: "left" }}>{detail.time}</p>
                                             </Alert>
                                         )
                                     })}

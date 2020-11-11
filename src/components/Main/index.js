@@ -7,6 +7,10 @@ import Wall from '../Wall/wall';
 import Chat from '../Chat/Chat';
 import MyChat from '../Chat/subject-chat';
 import OurTeam from '../ourTem/ourTeam';
+// import { DarkToggle } from "./DarkToggle.jsx";
+// import "react-toggle/style.css";
+// import "./DarkToggle.scss";
+
 
 function Main() {
     return (
@@ -42,6 +46,7 @@ function Main() {
 
                 <Route>404 Page Not Found!</Route>
             </Switch>
+            {/* <DarkToggle /> */}
         </main>
     )
 }
