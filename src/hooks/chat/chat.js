@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import cookie from 'js-cookie';
-const username = cookie.get('username');
+let username = cookie.get('username');
 const Chat = (socket) => {
     const [roomName, setRoomName] = useState('');
     const [msg, setMsg] = useState('');
@@ -9,6 +9,7 @@ const Chat = (socket) => {
     const [newMessages, setNewMessages] = useState([]);
     useEffect(() => {
         const room = window.location.href.split('?')[1].split('=')[1].toLowerCase();
+        username = cookie.get('username');
         socket.emit('joinRoom', { room, username });
         socket.on('history', messages => {
             let oldMsgArr = messages.map(val => {
@@ -19,7 +20,6 @@ const Chat = (socket) => {
     }, [socket]);
     socket.on('roomUsers', ({ room, users }) => {
         roomName !== '' && setRoomName(room);
-        console.log(users)
         let usersArr = users.map(val => val.username);
         usersArr = usersArr.filter(val => username !== val);
         setUsersNames([...usersArr]);
