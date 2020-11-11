@@ -3,12 +3,12 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { handleSignIn } from '../../store/auth';
 import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col, Card , Form} from "react-bootstrap";
-import './auth.scss';
 import { Redirect } from 'react-router-dom';
 import signUpImg from '../../images/signin-image.jpg';
 import { Link, withRouter } from "react-router-dom";
 import { withSnackbar } from 'notistack';
-
+import bg from './../../images/study.jpg';
+import './auth.scss';
 
 
 const Signin = props => {
@@ -28,10 +28,17 @@ const Signin = props => {
     props.enqueueSnackbar(button.message, { variant: button.variant });
 
   };
+  const styles = {
+    body :{
+      background: 'rgba(0, 0, 0, 0.5)',
+      backgroundImage: `url(${bg})`,
+    } ,
+  }
 
 
   return (
     <>
+    <div id="siginindiv" style={styles.body}>
       <Card>
         <Container className={'siucon'}>
           <Row>
@@ -75,6 +82,7 @@ const Signin = props => {
 
         </Container>
       </Card>
+      </div>
     </>
   );
 };

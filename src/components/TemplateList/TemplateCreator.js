@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { handleCourse, handleChapter, setTemp } from '../../store/template';
 import { Button, FormGroup, FormControl, FormLabel, InputGroup, Modal, Form, Container, Row, Col, Card } from "react-bootstrap";
@@ -26,6 +26,7 @@ const TemplateCreator = props => {
 
     const [idx, setIdx] = useState(0);
     const [enable, setEnable] = useState(true);
+
 
     const onCourseSubmit = (e) => {
         e.preventDefault();
@@ -72,12 +73,20 @@ const TemplateCreator = props => {
         else customizedTemplate(template);
     }
 
+    const styles = {
+        body :{
+            background: 'rgba(0, 0, 0, 0.5)',
+            backgroundImage: 'url(./../../images/study.jpg)',
+          } ,
+    }
+
     return (
-        <>
-            <Card>
+        <> 
+        <div className="ctcf" >
+            <Card className="card-form">
                 <Card.Body>
                     <h3>TEMPLATE DETAILS</h3>
-                    <Divider darker /> <br/>
+                    <Divider dark /> <br/>
                     <div className="instructions">
                         Jadwaleh gives you the ability to create and publish a customized template, where you can
                         share your study plan with other students with the same background. In order to create a new 
@@ -114,6 +123,7 @@ const TemplateCreator = props => {
                         return (
                             <Card>
                                 <Container key={i}>
+                                <br/>
                                     <Row>
                                         <Col>
                                             <h5>{course.name}</h5>
@@ -122,7 +132,7 @@ const TemplateCreator = props => {
                                             <Button variant="link" onClick={() => handleShowCh(i)}>Add Chapter</Button>
                                         </Col>
                                     </Row>
-                                    <br />
+                                    {/* <br /> */}
                                     <Row>
 
                                         {course.chapters.length > 0 ? course.chapters.map((chapter, j) => {
@@ -145,7 +155,7 @@ const TemplateCreator = props => {
 
                                         }) : null}
                                     </Row>
-                                    <Divider darker />
+                                    <Divider dark />
                                     <br />
                                 </Container>
                             </Card>
@@ -188,6 +198,7 @@ const TemplateCreator = props => {
                         {/* </Row> */}
                     </Card.Body>
             </Card>
+            </div>
         </>
     );
 };
