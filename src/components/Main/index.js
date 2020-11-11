@@ -18,7 +18,7 @@ import Profile from '../profile/profile';
 function Main(props) {
     useEffect(() => {
         console.log('props.auth.name', props.auth.name)
-    }, [props]);
+    }, []);
     return (
         <main>
             <Switch>
