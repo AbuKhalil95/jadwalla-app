@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { myWallStyle } from './styles/myWall.scss';
 import { connect } from 'react-redux';
 import postsGetter from '../../hooks/wall/wallGetter'
@@ -12,17 +12,13 @@ import QRCode from 'qrcode.react';
 import ClipBoard from './ClipBoard';
 const spinner = <Spinner animation="grow" size="sm" />;
 const Content = props => {
-    const [sharedUrl, setSharedUrl] = useState('');
-    useEffect(() => {
-        setSharedUrl('http://localhost:3000/wall/' + props.auth.userId);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-    const { posts, newPosts, activateTyping, postsSpinning } = postsGetter(props.socket);
+    const { posts, newPosts, activateTyping, sharedUrl, postsSpinning } = postsGetter(props.socket);
     return (
         <>
             <Container style={myWallStyle}   >
                 <Row className=" justify-content-md-center text-light bg-dark h5" style={{ padding: '20px', height: '70px' }}>
                     {postsSpinning ? <Spinner animation="border" /> : null} <span>My Wall</span>
+
                 </Row>
                 <Row className="justify-content-md-center mt-3">
                     <Card style={{ width: '18rem' }} >
@@ -37,6 +33,7 @@ const Content = props => {
                         </Card.Body>
                     </Card>
                 </Row>
+
                 <Row className="justify-content-md-center">  {activateTyping ?
                     <p>{spinner} {spinner} {spinner}  Someone is typing on your wall</p>
                     : null}
@@ -75,7 +72,8 @@ function getRandomNumberColor() {
     return colors[colorIndex];
 }
 const mapStateToProps = state => ({
-    auth: state.auth,
 });
 
-export default connect(mapStateToProps)(Content) 
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Content) 

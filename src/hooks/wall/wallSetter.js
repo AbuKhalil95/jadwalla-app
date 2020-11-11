@@ -3,7 +3,8 @@ const WallSetter = (socket) => {
     const [text, setText] = useState('');
     const [isSent, setIsSent] = useState(false);
     useEffect(() => {
-        const ownerId = window.location.href.split('wall/')[1];
+        // const ownerId = window.location.href.split('/wall/give-support/')[1];
+        const ownerId = '5f7c297b3994e4066c549646';
         socket.emit('userId', ownerId);
         socket.emit('typing', false);
     }, [socket]);
@@ -21,7 +22,3 @@ const WallSetter = (socket) => {
     return { _handleSubmit, _handleChange, isSent };
 }
 export default WallSetter;
-
-
-
-

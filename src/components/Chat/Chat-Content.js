@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import chatHook from '../../hooks/chat/chat'
 
 const Content = props => {
@@ -45,14 +44,12 @@ const Content = props => {
                 <input onChange={_handleChange} type="text"></input>
                 <button type="submit">submit</button>
             </form>
+
         </div>
     )
 
 };
 
-const mapStateToProps = state => ({
-});
 
-const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Content);
+export default Content;

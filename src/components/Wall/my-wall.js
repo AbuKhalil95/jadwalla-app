@@ -6,7 +6,7 @@ const MyWall = props => {
     const [socket, setSocket] = useState(socketClient);
     useEffect(() => {
         socket.close();
-        setSocket(socketClient('http://localhost:3001/myWall', { query: `userId=${props.auth.userId}` }));
+        setSocket(socketClient('http://localhost:3001/myWall', { query: "userId=5f7c297b3994e4066c549646" }));
         return () => {
             socket.close();
         };
@@ -18,9 +18,10 @@ const MyWall = props => {
         </>
     );
 };
+
 const mapStateToProps = state => ({
-    auth: state.auth,
-})
+});
 
+const mapDispatchToProps = {};
 
-export default connect(mapStateToProps)(MyWall) 
+export default connect(mapStateToProps, mapDispatchToProps)(MyWall) 
