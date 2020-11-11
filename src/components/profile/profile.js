@@ -1,49 +1,22 @@
 import React from 'react';
+import { Link, withRouter } from "react-router-dom";
+import { Button } from '@material-ui/core';
 
-import { makeStyles } from '@material-ui/core/styles';
-import ReactFrappeChart from "react-frappe-charts";
-import {addDays, isBefore, isEqual} from "date-fns";
-
-const useStyles = makeStyles((theme) => ({
-  profile: {
-    backgroundColor: 'antiquewhite',
-    padding: theme.spacing(6),
-  },
-}));
-
-let startDate = new Date("2020-01-01");
-let endDate = new Date("2020-12-31");
-
-function getHeatMapData() {
-  let dataPoints = {};
-  let currDate = startDate;
-  while (isBefore(currDate, endDate) || isEqual(currDate, endDate)) {
-    const count = pickRandomNumber(10, 1000);
-    dataPoints[currDate.getTime() / 1000] = count;
-    currDate = addDays(currDate, 1);
-  }
-  return dataPoints;
-}
-
-function pickRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 const Profile = (props) => {
-  const classes = useStyles();
 
   return (
-    <div className={classes.profile}>
-      <ReactFrappeChart
-        type="heatmap"
-        data={{
-          dataPoints: getHeatMapData(),
-          start: startDate,
-          end: endDate,
-        }}
-      />
+    <div>
+      <div className='userCard'>
+          <Link to='./create-template'>
+            <Button variant="contained" color="primary">CREATE YOUR OWN TEMPLATE</Button> 
+          </Link>
+          <Link to='./select-template'>
+            <Button variant="contained" color="primary">CHOOSE FROM OTHER TEMPLATES</Button> 
+          </Link>
+      </div>
     </div>
   )
 }
 
-export default Profile;
+export default withRouter(Profile);
