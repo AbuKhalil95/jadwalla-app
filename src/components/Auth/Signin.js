@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { handleSignIn } from '../../store/auth';
-import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col, Card , Form} from "react-bootstrap";
+import { Button, FormGroup, FormControl, FormLabel, Container, Row, Col, Card, Form } from "react-bootstrap";
 import './auth.scss';
 import { Redirect } from 'react-router-dom';
 import signUpImg from '../../images/signin-image.jpg';
@@ -12,7 +12,7 @@ import { withSnackbar } from 'notistack';
 
 
 const Signin = props => {
-
+  const [redirect, setRedirect] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const signInValues = {
@@ -20,18 +20,16 @@ const Signin = props => {
       password: await e.target.password.value,
     };
     await props.handleSignIn(signInValues);
-    window.location.href = "/";
+    setRedirect(true);
   }
   const handleClick = button => () => {
     window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
     props.enqueueSnackbar('Ready to start a new Learning Adventure?', { variant: 'info' });
     props.enqueueSnackbar(button.message, { variant: button.variant });
-
   };
-
-
   return (
     <>
+      {redirect && <Redirect to='/' />}
       <Card>
         <Container className={'siucon'}>
           <Row>
@@ -55,9 +53,9 @@ const Signin = props => {
                   />
                 </FormGroup>
                 <Form.Group controlId="formBasicCheckbox">
-                  <Form.Check type="checkbox" label="Remember me" checked/>
+                  <Form.Check type="checkbox" label="Remember me" checked />
                 </Form.Group>
-           
+
                 <Button block bsSize="large" type="submit" onClick={handleClick({ variant: 'success', message: 'Welcome back' })}>
                   Login
                 </Button>

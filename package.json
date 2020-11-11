@@ -16,7 +16,6 @@
     "axios": "^0.21.0",
     "base-64": "^1.0.0",
     "bootstrap": "^4.5.3",
-    "qrcode.react": "^1.0.0",
     "install": "^0.13.0",
     "jquery": "^3.5.1",
     "js-cookie": "^2.2.1",
@@ -24,6 +23,7 @@
     "node-sass": "^4.14.1",
     "notistack": "^1.0.1",
     "npm": "^6.14.8",
+    "qrcode.react": "^1.0.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-chat-elements": "^10.11.3",
@@ -42,7 +42,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "CHOKIDAR_USEPOLLING=1 react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

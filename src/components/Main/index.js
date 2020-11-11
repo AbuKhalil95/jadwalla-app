@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import SignIn from '../Auth/Signin';
+import { connect } from 'react-redux'
 import SignUp from '../Auth/Signup';
 import MyWall from '../Wall/my-wall';
 import Wall from '../Wall/wall';
 import Chat from '../Chat/Chat';
 import MyChat from '../Chat/subject-chat';
-import Home_Osama from '../HomePage';
+import Landing from '../HomePage';
 import Dashboard from '../Dashboard/Dashboard';
 import Home from './home.js';
 import TemplateCreator from '../TemplateList/TemplateCreator.js';
 import TemplateSelector from '../TemplateList/TemplateSelector.js';
 import Notifications from '../Notification/Notifications';
 
-function Main() {
+function Main(props) {
+    useEffect(() => {
+        console.log(props.auth)
+    }, [props.auth]);
     return (
         <>
             <Switch>
                 <Route exact path="/">
-                    <Home_Osama />
-                    <Home />
+                    {props.auth.name ? <Landing /> : <Home />}
                 </Route>
                 <Route exact path="/signin">
                     <SignIn />
@@ -66,6 +69,7 @@ function Main() {
         </>
     )
 }
-
-
-export default Main;
+const mapStateToProps = state => ({
+    auth: state.auth,
+})
+export default connect(mapStateToProps)(Main); 

@@ -46,17 +46,18 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-.App {
+/* .App {
   text-align: center;
   display: grid;
   height: 140vh;
-  grid-template-columns: 1fr 8fr 1fr;
+   grid-template-columns: 1fr 8fr 1fr;
   grid-template-rows: 1fr 8fr 1fr;
   grid-template-areas: 
   "header header header"
   ". main ."
   "footer footer footer";
-}
+ }
+*/
 
 header {
   grid-area: header;

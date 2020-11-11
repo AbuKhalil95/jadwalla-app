@@ -23,26 +23,8 @@ import FaceIcon from '@material-ui/icons/Face';
 import cookie from 'js-cookie';
 import { handleLogOut } from '../store/auth';
 import { Redirect } from 'react-router-dom';
-
-import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 // import { Link } from 'react-router-dom';
-
-function Header() {
-  return (
-    <>
-      <Navbar bg="primary" variant="dark">
-        <Nav className="mr-auto">
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/wall">Wall</Nav.Link>
-          <Nav.Link href="/myWall">My Wall</Nav.Link>
-          <Nav.Link href="/chat">Chat</Nav.Link>
-
-        </Nav>
-      </Navbar>
-    </>
-  );
-};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,16 +49,17 @@ const Header = (props) => {
     return <Redirect to="/" />
 
   }
-
   useEffect(() => {
     setAuth(cookie.get('userId') ? cookie.get('userId') : null);
   }, []);
+  useEffect(() => {
+    setAuth(cookie.get('userId') ? cookie.get('userId') : null);
+  }, [props.auth]);
 
   return (
     <header className={classes.root}>
       <AppBar position="static" color="default">
         <Toolbar>
-          <MenuButton iconType={NotificationsNoneIcon} type={'notifications'} content={['One Notif']} />
           <Typography variant="h6" className={classes.title}>
             <IconButton color="inherit" aria-label="Logo">
               <TableChartIcon />
@@ -89,6 +72,7 @@ const Header = (props) => {
             </IconButton>
             {auth && (
               <>
+                <MenuButton iconType={NotificationsNoneIcon} type={'notifications'} content={['One Notif']} />
                 <MenuButton iconType={AccountCircleIcon} type={'profile'}
                   content={[['Profile', '/profile'], ['Dashboard', '/dashboard'], ['Settings', '/settings']]} />
               </>
