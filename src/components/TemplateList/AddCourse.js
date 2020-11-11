@@ -13,7 +13,7 @@ const AddCourse = props => {
                         autoFocus
                         type="text"
                         name="name"
-                        placeholder = "COURSE NAME"
+                        defaultValue={(props.course && props.course.name) || "COURSE NAME"}
                     />
                 </FormGroup>
 

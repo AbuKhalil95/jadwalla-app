@@ -43,13 +43,16 @@ const Session = props => {
     console.log('updated session ------------>   ', props.session);
   }
 
-  const handleChange = (event) => {
-    console.log(event.nativeEvent.target);
+  const handleChange = async (event) => {
+    console.log(event);
 
     let id =  event.target.value;
-    // let string = event.nativeEvent.target[event.nativeEvent.target.selectedIndex].text
-    setLessonId(id);
-    // setLesson(string);
+    let string = event.nativeEvent.target.childNodes[0].data;
+    console.log(id, lessonId, string);
+
+    await setLessonId(id);
+    console.log(id, lessonId);
+    setLesson(string);
   };
 
   const onSessionSubmit = async (e)=> {
@@ -75,11 +78,17 @@ const Session = props => {
   
     let res = await axios.post(`https://jadwalla.herokuapp.com/api/v1/weekly`, day, options);
     console.log('response from session', res)
-    handleUpdateHistory(day.lessonId)
+    const update = {
+      completed: day.completed,
+      time: day.time,
+    }
+    handleUpdateHistory(day.lessonId, update)
   };
 
-  const handleUpdateHistory = async (id) => {
+  const handleUpdateHistory = async (id, update) => {
     let token = cookie.get('auth');
+    let userId = cookie.get('userId');
+
     // let params = JSON.stringify(sciSchedule);
     const options = {
       mode: 'cors',
@@ -90,7 +99,7 @@ const Session = props => {
     };
     console.log('lesson id being updated >>>>>>>>>>>', id);
   
-    let res = await axios.put(`https://jadwalla.herokuapp.com/api/v1/history/lesson/:id`, id, options);
+    let res = await axios.put(`https://jadwalla.herokuapp.com/api/v1/history/owner/${userId}/lesson/${id}`, update, options);
     console.log('response from session', res)
   };
 
@@ -101,7 +110,7 @@ const Session = props => {
       <br/>
         {props.history.name}
       <br/>
-      <Button variant="contained" onClick={handleToggle} color={props.session.active ? "secondary" : "primary"}>
+      <Button variant="contained" onClick={handleToggle} color={props.session.active ? "secondary" : "primary"} disabled={!lesson}>
         {props.session.active ? ("END") : ("START")}
       </Button>
 

@@ -20,7 +20,7 @@ const Signin = props => {
       password: await e.target.password.value,
     };
     await props.handleSignIn(signInValues);
-    window.location.href = "/";
+    window.location.href="/";
   }
   const handleClick = button => () => {
     window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
@@ -88,4 +88,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { handleSignIn };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(Signin));
+export default connect(mapStateToProps, mapDispatchToProps)(Signin);

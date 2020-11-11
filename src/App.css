@@ -61,7 +61,7 @@ header {
 main {
   grid-area: main;
   padding-top: 30px;
-  /* background-color: antiquewhite; */
+  background-color: antiquewhite;
 }
 ​
 footer {

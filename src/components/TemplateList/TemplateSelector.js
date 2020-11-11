@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { chooseTemplate } from '../../store/template';
 import './templateSelector.scss';
 import { Card, Button } from "react-bootstrap";
-
+import { createSciTemplate } from './createTemplate.js';
 
 const TemplateSelector = props => { 
 
@@ -25,7 +25,7 @@ const TemplateSelector = props => {
                   <Card.Text>
                     {card.description}
                   </Card.Text>
-                  <Button onClick={() => {alert('data')}}>CHOOSE THIS TEMPLATE</Button>
+                    <Button onClick={createSciTemplate}>CHOOSE THIS TEMPLATE</Button>
                 </Card.Body>
               </Card>
             </li>
@@ -39,7 +39,6 @@ const TemplateSelector = props => {
 const mapStateToProps = state => ({
   list: state.allTemplates,
   history: state.allTemplates,
-
 });
 
 const mapDispatchToProps = { chooseTemplate };
