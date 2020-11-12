@@ -40,6 +40,8 @@ const TemplateCreator = props => {
         };
         props.handleCourse(course);
         handleClose();
+        window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
+        props.enqueueSnackbar('The new course has been added', { variant: 'success' });
 
     };
 
@@ -52,6 +54,7 @@ const TemplateCreator = props => {
         };
         props.handleChapter(idx, chapter);
         handleCloseCh();
+        
     };
 
     const handleSubmit = (e) => {
@@ -71,15 +74,17 @@ const TemplateCreator = props => {
             window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
             props.enqueueSnackbar('You should fill all required fields', { variant: 'error' });
         }
-        else customizedTemplate(template);
+        else {
+            customizedTemplate(template);
+            window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
+            props.enqueueSnackbar(`The ${props.name} Template has been created`, { variant: 'info' });}
     }
 
-    const styles = {
-        body: {
-            background: 'rgba(0, 0, 0, 0.5)',
-            backgroundImage: 'url(./../../images/study.jpg)',
-        },
-    }
+    const handleClick = button => () => {
+        window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
+        props.enqueueSnackbar('Ready to start a new Learning Adventure?', { variant: 'info' });
+        props.enqueueSnackbar(button.message, { variant: button.variant });
+    };
 
     return (
         <>
@@ -118,16 +123,16 @@ const TemplateCreator = props => {
 
                         </Form>
                         <br />
-                        <Row className="submitRow">
-                        <Button className="submit" variant="dark" onClick={handleShow}>ADD A COURSE</Button>
-                        <Button className="submit" disabled={enable} onClick={createTemplate}>CREATE TEMPLATE</Button>
-                        </Row>
+                        <div className="submitRow">
+                            <Button className="submit" variant="dark" onClick={handleShow}>ADD A COURSE</Button>
+                            <Button className="submit" disabled={enable} onClick={createTemplate}>CREATE TEMPLATE</Button>
+                        </div>
                         {props.courses ? props.courses.map((course, i) => {
                             return (
-                                <Card>
-                                    <Container key={i}>
+                                <Card className="coursecard">
+                                    <Container key={i} className="course" >
                                         <br />
-                                        <Row>
+                                        <Row >
                                             <Col>
                                                 <h5>{course.name}</h5>
                                             </Col>

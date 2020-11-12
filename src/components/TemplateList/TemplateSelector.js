@@ -7,31 +7,40 @@ import { chooseTemplate } from '../../store/template';
 import './templateSelector.scss';
 import { Card, Button } from "react-bootstrap";
 import { createSciTemplate } from './createTemplate.js';
+import Divider from '@material-ui/core/Divider';
 
 const TemplateSelector = props => { 
 
   return (
     <>
-      <h2>With JADWALEH, track your day-to-day study timetable</h2>
-      <h3>CHOOSE YOUR PLAN</h3>
-      {console.log('props.list', props.list)}
-      <ul className="list-container">
-        {props.list.length > 0 ? props.list.map((card, index) => {
-          return (
-            <li key={index}>
-              <Card style={{ width: '18rem' }} className="mb-2">
-                <Card.Header>{card.name.toUpperCase()}</Card.Header>
-                <Card.Body>
-                  <Card.Text>
-                    {card.description}
-                  </Card.Text>
-                    <Button onClick={() => createSciTemplate(props.list[index])}>CHOOSE THIS TEMPLATE</Button>
-                </Card.Body>
-              </Card>
-            </li>
-          )
-        }) : 'null'}
-      </ul>
+    <div className="ctcf" >
+      <Card className="card-form">
+          <Card.Body>
+            <h3>CHOOSE YOUR PLAN</h3>
+              <Divider dark /> <br />
+              <ul className="list-container">
+              {props.list.length > 0 ? props.list.map((card, index) => {
+                return (
+                  <li key={index}>
+                    <Card style={{ width: '18rem' }} className="mb-2">
+                      <Card.Header>{card.name.toUpperCase()}</Card.Header>
+                      <Card.Body>
+                        <Card.Text>
+                          {card.description}
+                        </Card.Text>
+                        <div className="buttons">
+                          <Button onClick={() => createSciTemplate(props.list[index])}>Select</Button>
+                          <Button type="button" className="btn btn-info" onClick={() => createSciTemplate(props.list[index])}>Details</Button>
+                        </div>
+                      </Card.Body>
+                    </Card>
+                  </li>
+                  )
+                }) : 'null'}
+              </ul>
+            </Card.Body>
+        </Card>
+      </div>
     </>
   );
 };

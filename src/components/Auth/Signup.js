@@ -20,6 +20,7 @@ const Signup = props => {
       role: e.target.role.value,
     };
     props.handleSignUp(signUpValues);
+    window.location.href = "/signin";
   };
 
 

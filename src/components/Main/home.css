@@ -1,30 +1,47 @@
+.ctcfH{
+  background-image: url(./../../images/study2.jpg);
+  background-size: cover;
+  min-width: 100%;
+  min-height: 100%;
+}
+.card-formH{
+  padding-bottom: 5rem;
+  max-width: 78%;
+  min-height: 110%;
+  margin: auto;
+  margin-top: 3rem;
+  z-index: 0;
+  background-color: rgba(0, 0, 0, 0) !important;
+}
 
 .homeGrid {
-  background-color: white;
   width: 100%;
-  min-height: 165vh;
   display: grid !important;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-template-areas: 
-  "section"
-  ".";
+  grid-template-areas:
+      "section"
+      ".";
   z-index: -1;
 }
+
 .sectionGrid {
   grid-area: section;
   width: 100%;
+  background: white;
   min-height: 100vh;
+  padding-top: 1em;
   display: grid !important;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas: 
-  " . profile . . . . "
-  " . profile . session session . "
-  " . profile heatmap heatmap heatmap . ";
-  background-color: blanchedalmond;
+  grid-template-rows: 0.1fr 0.5fr 1fr 0.5fr 0.8fr;
+  grid-template-areas:
+    " . . title title . . "
+    " . profile . . allSession allSession "
+    " . profile session session allSession allSession "
+    " . profile . . allSession allSession "
+    " . heatmap heatmap heatmap heatmap . ";
   z-index: 0;
-  box-shadow: 0px 10px 35px 70px rgba(0,0,0,0.8), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+  box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.8);
 }
 
 .backgroundImage {
@@ -35,6 +52,12 @@
   background-repeat: no-repeat;
   position: fixed;
   z-index: 0;
+  background-position-y: -3em;
+}
+
+.title {
+  grid-area: title;
+  text-align: center;
 }
 
 .profile {
@@ -49,6 +72,18 @@
 .session {
   grid-area: session;
 }
+
+.allSession {
+  margin: 2em 0;
+  grid-area: allSession;
+  max-height: 30em;
+  overflow-y: auto;
+  max-width: 20em;
+  border: #adadad;
+  border-radius: 1em;
+  border-style: solid;
+}
+
 
 .blankSpace {
   grid-area: blank;
