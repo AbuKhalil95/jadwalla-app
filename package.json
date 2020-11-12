@@ -2,6 +2,7 @@
   "name": "jadwalla-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "",
   "dependencies": {
     "@date-io/moment": "^2.10.6",
     "@devexpress/dx-react-core": "^2.7.3",

@@ -9,7 +9,7 @@ const Features = props => {
         < Container className='pt-5 mt-5 pb-5'>
             <Row >
                 <Col>
-                    <h3>Jadwalla Features</h3>
+                    <h3 className='display-3'>Jadwalla Features</h3>
                 </Col>
             </Row>
             <Row className='pt-5 pb-5' >
