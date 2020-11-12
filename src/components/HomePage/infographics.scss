@@ -1,4 +1,4 @@
-$c: #ee8c35, #ad4716;
+$c: #2c3136, #2c3136;
 $c0: rgba(#fff, 0.8);
 
 $art-lh: 1.25;
@@ -179,11 +179,11 @@ $par-ti: calc(var(--k) *#{$par-ti-norm});
                 content: "+";
             }
         }
-
         p {
             padding: $par-pv 0;
             padding-left: $par-pl;
             text-indent: $par-ti;
+            font-size: x-large;
         }
     }
 }

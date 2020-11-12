@@ -1,50 +1,50 @@
 @media all and (min-width: 480px) {
-body{
-    background: rgba(0, 0, 0, 0.5);
-}
-.submit{
-    margin: 10px;
-}
-.submitRow{
-    align-items: center;
-    margin:auto;
-    max-width: 35%;
-}
-.instructions{
-    text-align: left;
-    padding: 10px;
-}
+    body {
+        background: rgba(0, 0, 0, 0.5);
+    }
+    .submit {
+        margin: 10px;
+    }
+    .submitRow {
+        align-items: center;
+        margin: auto;
+        max-width: 35%;
+    }
+    .instructions {
+        text-align: left;
+        padding: 10px;
+    }
 
-.ctcf{
-    background-image: url(./../../images/study2.jpg);
-    background-size: cover;
-    min-width: 100%;
-    min-height: 100%;
-}
-.card-header {
-    text-align: center;
-    font-family: fantasy;
-}
-.card-form{
-    padding-bottom: 5rem;
-    background-color: rgba(0, 0, 0, 0.5);
-    max-width: 78%;
-    min-height: 110%;
-    margin: auto;
-    padding: 5rem;
-    margin-top: 3rem;
-}
-.course{
-    margin: auto;
-    text-align: center;
-    background-color: #E8F8F5;
-}
-.coursecard{
-    margin-top: 1.5rem;
-}
+    .ctcf {
+        background-image: url(./../../images/study2.jpg);
+        background-size: cover;
+        min-width: 100%;
+        min-height: 100%;
+    }
+    .card-header {
+        text-align: center;
+        font-family: fantasy;
+    }
+    .card-form {
+        padding-bottom: 5rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        max-width: 78%;
+        min-height: 110%;
+        margin: auto;
+        padding: 5rem;
+        margin-top: 3rem;
+    }
+    .course {
+        margin: auto;
+        text-align: center;
+        background-color: #e8f8f5;
+    }
+    .coursecard {
+        margin-top: 1.5rem;
+    }
 
-.buttons {
-    display: flex; 
-    justify-content: space-evenly;
-}
+    .buttons {
+        display: flex;
+        justify-content: space-evenly;
+    }
 }

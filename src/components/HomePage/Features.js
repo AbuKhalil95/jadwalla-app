@@ -4,13 +4,12 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Accordion from 'react-bootstrap/Accordion';
-import Card from 'react-bootstrap/Card';
 const Features = props => {
     return (
         < Container className='pt-5 mt-5 pb-5'>
             <Row >
                 <Col>
-                    <h3>Jadwalla Features</h3>
+                    <h3 className='display-3'>Jadwalla Features</h3>
                 </Col>
             </Row>
             <Row className='pt-5 pb-5' >
@@ -24,7 +23,7 @@ const Features = props => {
                             </div>
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0" style={{ paddingLeft: '15px' }}>
-                            <p style={{ width: '326px', textAlign: 'left' }}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi, tempore repellendus? Eaque corporis architecto .</p>
+                            <p style={{ width: '326px', textAlign: 'left' }}>Prepare Your Study Strategy. Create a study schedule and take control of your learning.</p>
                         </Accordion.Collapse>
                     </Accordion>
                 </Col>
@@ -38,7 +37,7 @@ const Features = props => {
                             </div>
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0" style={{ paddingLeft: '15px' }} >
-                            <p style={{ width: '326px', textAlign: 'left' }}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi, tempore repellendus? Eaque corporis architecto .</p>
+                            <p style={{ width: '326px', textAlign: 'left' }}>You can have different study groups where you can regularly meet to discuss shared fields of study.</p>
                         </Accordion.Collapse>
                     </Accordion>
                 </Col>
@@ -52,7 +51,7 @@ const Features = props => {
                             </div>
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0" style={{ paddingLeft: '15px' }}>
-                            <p style={{ width: '326px', textAlign: 'left' }}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi, tempore repellendus? Eaque corporis architecto .</p>
+                            <p style={{ width: '326px', textAlign: 'left' }}>Involve everyone, let your friends and family write motivational and inspirational words for you.</p>
                         </Accordion.Collapse>
                     </Accordion>
                 </Col>

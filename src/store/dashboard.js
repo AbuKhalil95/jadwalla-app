@@ -50,6 +50,9 @@ export const getDash = () => {
         type: 'GET-DASHBOARD',
         payload: toBeSent,
       });
-    } catch {};
-  }
+
+    } catch (error) {
+
+    }
+  };
 };
