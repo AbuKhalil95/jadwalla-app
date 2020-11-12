@@ -25,7 +25,7 @@ const AddChapter = props => {
                         autoFocus
                         type="number"
                         name="time"
-                        defaultValue={props.time || 0}
+                        defaultValue={parseInt(props.time/60) || 0}
                     />
                 </FormGroup>
 

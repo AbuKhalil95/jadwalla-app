@@ -21,6 +21,10 @@ body{
     min-width: 100%;
     min-height: 100%;
 }
+.card-header {
+    text-align: center;
+    font-family: fantasy;
+}
 .card-form{
     padding-bottom: 5rem;
     background-color: rgba(0, 0, 0, 0.5);
@@ -39,4 +43,8 @@ body{
     margin-top: 1.5rem;
 }
 
+.buttons {
+    display: flex; 
+    justify-content: space-evenly;
+}
 }

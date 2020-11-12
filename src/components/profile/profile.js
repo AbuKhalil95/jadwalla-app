@@ -14,7 +14,7 @@ const Profile = (props) => {
       <div className='userHistory'><b>{props.history.name ? props.history.name : 'No History Yet!'}</b></div>
       <div className='userStart' style={{color: '#888888'}}>{props.history.name ? 'Started at: ' + props.history.startDate : null}</div>
       <hr/>
-      <div>
+      <div className="buttons">
         <Link disabled={props.history.name ? true : false} to='./create-template'>
           <Button variant="contained" color="primary" disabled={props.history.name ? true : false}>CREATE</Button> 
         </Link>

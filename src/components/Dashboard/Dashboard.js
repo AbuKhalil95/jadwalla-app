@@ -13,11 +13,12 @@ import Fab from "@material-ui/core/Fab";
 import { makeStyles } from '@material-ui/core/styles';
 import AddIcon from "@material-ui/icons/Add";
 import { withSnackbar } from 'notistack';
+import { green, deepOrange, lightBlue, yellow, purple } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   addButton: {
-    position: "absolute",
-    bottom: '15vh',
+    position: "fixed",
+    bottom: '30vh',
     right: '10vh'
   }
 }));
@@ -48,7 +49,7 @@ const Dashboard = props => {
           id: index,
           startDate: new Date(new Date(session.date).getTime()),
           endDate: new Date(start.getTime() + session.time),
-          title: `${session.lesson} \n  ${session.completed*100}% in ${session.time} seconds`,
+          title: `${session.lesson} \n  ${session.completed*100}% in ${session.time / 600000} minutes`,
           priorityId: prioColor,
         }
       });
@@ -59,7 +60,6 @@ const Dashboard = props => {
   }
 
   useEffect(async() => {
-    await props.getDash();
     await props.getDash();
     await props.getSessions();
     convertToSessions(props.sessions);
@@ -96,19 +96,38 @@ const Dashboard = props => {
     'Light',
     'Dark',
   ];
+
+  const courseColor = (course) => {
+    const units = [
+      { id: 1, text: "Physics", color: 'warning' },
+      { id: 2, text: "Mathematics", color: 'danger' },
+      { id: 3, text: "Chemistry", color: 'success' },
+      { id: 4, text: "Biology", color: 'primary' },
+      { id: 5, text: "English", color: 'info' },
+    ];
+
+    let color;
+    
+    units.forEach(unit => {
+      console.log(unit.text, course.name, unit.text === course.name, unit.color)
+      if (unit.text === course.name) color = unit.color;
+    });
+    return color;
+  }
+
   return (
     <>
     {console.log('props.total', props.total)}
       {/* <Calender data={sessions}/> */}
-      <div style={{display: show ? 'block' : 'none'}}>
-        <Calender data={sessions} />
-      </div>
-      {/* <Timetable/> */}
-      <ul className="list-container">
+      <div className="calendar">
+        <div style={{display: show ? 'block' : 'none'}}>
+          <Calender data={sessions} />
+        </div>
+        <ul className="list-container">
         {props.data.length > 0 ? props.data.map((course, idx) => {
           return (
             <Card
-              bg={variant[idx].toLowerCase()}
+              bg={courseColor(course)}
               key={idx}
               text={variant[idx].toLowerCase() === 'light' ? 'dark' : 'white'}
               style={{ width: '18rem' }}
@@ -127,7 +146,9 @@ const Dashboard = props => {
             </Card>
           )
         }) : null}
-      </ul>
+        </ul>
+      </div>
+      {/* <Timetable/> */}
       <Fab
           color="secondary"
           className={classes.addButton}
