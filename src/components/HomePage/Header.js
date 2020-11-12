@@ -19,8 +19,8 @@ const Header = props => {
                         <Carousel.Item interval={3000} className='h-75'>
                             <Row className=' text-dark p-1' style={{ 'background-color': '#e9ecef' }}>
                                 <Col>
-                                    <h3>First slide label</h3>
-                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                    <h3>Why Education?</h3>
+                                    <p>Having education in an area helps people think, feel, and behave in a way that contributes to their success, and improves not only their personal satisfaction but also their community.</p>
                                 </Col>
                             </Row>
                             <img
@@ -32,8 +32,8 @@ const Header = props => {
                         <Carousel.Item interval={3000}>
                             <Row className=' text-dark p-1' style={{ 'background-color': '#e9ecef' }}>
                                 <Col>
-                                    <h3>First slide label</h3>
-                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                    <h3>What schools did pre Covid-19?</h3>
+                                    <p>school learning specifies the distinctive roles of generalized abilities and task-specific aptitudes in determining the effects of instruction on learning.</p>
                                 </Col>
                             </Row>
                             <img
@@ -45,8 +45,8 @@ const Header = props => {
                         <Carousel.Item interval={3000} >
                             <Row className='text-dark p-1' style={{ 'background-color': '#e9ecef' }}>
                                 <Col>
-                                    <h3>Third slide label</h3>
-                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                    <h3>What we do post Covid-19?</h3>
+                                    <p>We teach time management, online collaboration skills, research, and prepare for future online courses in college.</p>
                                 </Col>
                             </Row>
                             <img

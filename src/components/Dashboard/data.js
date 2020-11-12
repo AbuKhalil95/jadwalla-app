@@ -1,11 +1,11 @@
-import { green, deepOrange, lightBlue, yellow, purple } from "@material-ui/core/colors";
+import { green, yellow, purple, red, blue, cyan } from "@material-ui/core/colors";
 
 export const priorities = [
-  { id: 1, text: "Physics", color: green },
-  { id: 2, text: "Mathematics", color: lightBlue },
-  { id: 3, text: "Chemistry", color: deepOrange },
-  { id: 4, text: "Biology", color: yellow },
-  { id: 5, text: "English", color: purple },
+  { id: 1, text: "Physics", color: '#ffc107' },
+  { id: 2, text: "Mathematics", color: '#dc3545' },
+  { id: 3, text: "Chemistry", color: '#28a745' },
+  { id: 4, text: "Biology", color: '#007bff' },
+  { id: 5, text: "English", color: '#17a2b8' },
 ];
 
 export const appointments = [

@@ -1,10 +1,11 @@
+import './session.css';
 import axios from 'axios';
 import cookie from 'js-cookie';
 
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { toggleSession } from '../../store/session';
-
+import Timer from 'react-compound-timer';
 import AddComplete from './AddComplete.js';
 
 import { Button, Select, MenuItem, FormControl, InputLabel, makeStyles } from '@material-ui/core';
@@ -59,7 +60,7 @@ const Session = props => {
     e.preventDefault();
     const todaySession = props.session.day;
     todaySession.completed = e.target.completed.value/100;
-    todaySession.time = e.target.time.value || time;
+    todaySession.time = e.target.time.value * 60000  || time;
     await handleAddSession(todaySession);
     handleCloseCh();
   };
@@ -105,9 +106,60 @@ const Session = props => {
 
   return (
     <>
-      <Button variant="contained" onClick={handleToggle} color={props.session.active ? "secondary" : "primary"} disabled={!lesson}>
-        {props.session.active ? ("END") : ("START")}
-      </Button>
+      <Timer 
+        initialTime={0}
+        startImmediately={false}
+        onStart={() => {handleToggle();}}
+        onStop={() => handleToggle()}>
+        {({ start, resume, pause, stop, reset, timerState }) => (
+          <div className='clock-container'>
+            <div className='clock'>
+              <div className="numbers">
+                <p className="hours"><Timer.Hours /></p>
+              </div>
+              <div className="colon">
+                <p>:</p>
+              </div>
+              <div className="numbers">
+                <p className="minutes"><Timer.Minutes /></p>
+              </div>
+              <div className="colon">
+                <p>:</p>
+              </div>
+              <div className="numbers">
+                <p className="seconds"><Timer.Seconds /></p>
+              </div>
+            </div>
+            <Button variant="contained" onClick={props.session.active ? stop : start} color={props.session.active ? "secondary" : "primary"} disabled={!lesson}>
+              {props.session.active ? ("END") : ("START")}
+            </Button>
+          </div>
+        )}
+      </Timer>
+      <div className='contained'>
+        <FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel id="demo-simple-select-outlined-label">Lesson</InputLabel>
+          <Select
+            disabled={!props.history.startDate}
+            labelId="demo-simple-select-outlined-label"
+            id="demo-simple-select-outlined"
+            value={lessonId}
+            onChange={handleChange}
+            label="Lesson"
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {props.history.courses.map((course, indexE) => {
+              return course.chapters.map((chapter, index) => {
+                return (
+                  <MenuItem value={chapter._id} key={index}>{props.history.courses[indexE].name + ': ' + chapter.name}</MenuItem>
+                )
+              })
+            })}
+          </Select>
+        </FormControl>
+      </div>
 
       <Modal show={showCh} onHide={handleCloseCh} >
         <Modal.Header closeButton>
@@ -122,29 +174,6 @@ const Session = props => {
             </Button>              
         </Modal.Footer>
       </Modal>
-
-
-      <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel id="demo-simple-select-outlined-label">Lesson</InputLabel>
-        <Select
-          labelId="demo-simple-select-outlined-label"
-          id="demo-simple-select-outlined"
-          value={lessonId}
-          onChange={handleChange}
-          label="Lesson"
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          {props.history.courses.map((course, indexE) => {
-            return course.chapters.map((chapter, index) => {
-              return (
-                <MenuItem value={chapter._id} key={index}>{props.history.courses[indexE].name + ': ' + chapter.name}</MenuItem>
-              )
-            })
-          })}
-        </Select>
-      </FormControl>
     </>
   )
 }
