@@ -15,7 +15,7 @@ import TemplateSelector from '../TemplateList/TemplateSelector.js';
 import Notifications from '../Notification/Notifications';
 import Profile from '../profile/profile';
 import cookie from 'js-cookie';
-
+import OurTeam from '../ourTeam/OurTeam'
 function Main(props) {
     return (
         <main>
@@ -55,6 +55,9 @@ function Main(props) {
                 </Route>
                 <Route exact path="/Chat">
                     <Chat />
+                </Route>
+                <Route exact path="/OurTeam">
+                    <OurTeam />
                 </Route>
                 <Route>404 Page Not Found!</Route>
             </Switch >

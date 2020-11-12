@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import cookie from 'js-cookie';
-let username = cookie.get('username').toUpperCase();
+let username = '';
 const Chat = (socket) => {
     const [roomName, setRoomName] = useState('');
     const [msg, setMsg] = useState('');
@@ -18,6 +18,7 @@ const Chat = (socket) => {
             });
             setOldMessages([...oldMsgArr]);
         });
+        username = cookie.get('username').toUpperCase()
     }, [socket]);
     socket.on('roomUsers', ({ room, users }) => {
         let usersArr = users.map(val => val.username);
