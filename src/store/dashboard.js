@@ -37,17 +37,22 @@ export const getDash = () => {
     let res = await axios.get(`https://jadwalla.herokuapp.com/api/v1/dashboard/${user_id}`, options);
     console.log(res.data)
     let total = 0, progress;
-    await res.data.forEach(course => {
-      total += course.progress;
-    });
-    progress = total / res.data.length;
-    let toBeSent = {
-      pro: progress,
-      data: res.data,
+    try {
+      await res.data.forEach(course => {
+        total += course.progress;
+      });
+      progress = total / res.data.length;
+      let toBeSent = {
+        pro: progress,
+        data: res.data,
+      }
+      dispatch({
+        type: 'GET-DASHBOARD',
+        payload: toBeSent,
+      });
+
+    } catch (error) {
+
     }
-    dispatch({
-      type: 'GET-DASHBOARD',
-      payload: toBeSent,
-    });
   };
 };

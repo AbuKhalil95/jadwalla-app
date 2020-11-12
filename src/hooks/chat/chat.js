@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import cookie from 'js-cookie';
-let username = cookie.get('username');
+let username = cookie.get('username').toUpperCase();
 const Chat = (socket) => {
     const [roomName, setRoomName] = useState('');
     const [msg, setMsg] = useState('');
@@ -9,6 +9,7 @@ const Chat = (socket) => {
     const [newMessages, setNewMessages] = useState([]);
     useEffect(() => {
         const room = window.location.href.split('?')[1].split('=')[1].toLowerCase();
+        setRoomName(room);
         username = cookie.get('username');
         socket.emit('joinRoom', { room, username });
         socket.on('history', messages => {
@@ -19,13 +20,19 @@ const Chat = (socket) => {
         });
     }, [socket]);
     socket.on('roomUsers', ({ room, users }) => {
-        roomName !== '' && setRoomName(room);
         let usersArr = users.map(val => val.username);
-        usersArr = usersArr.filter(val => username !== val);
+        let prevVal = '';
+        usersArr = usersArr.filter(val => {
+            if (username.toUpperCase() !== val.toUpperCase() && val.toUpperCase() !== prevVal.toUpperCase()) {
+                prevVal = val;
+                return true
+            }
+            else return false
+        });
+        console.log('usersArr', usersArr)
         setUsersNames([...usersArr]);
     });
     socket.on('message', message => {
-
         setNewMessages([...newMessages, outputMessage(message)])
     });
     const _handleSubmit = (e) => {

@@ -6,16 +6,6 @@
     box-sizing: border-box;
 }
 
-::-moz-selection {
-    background: #c6ff91;
-    text-shadow: none;
-}
-
-::selection {
-    background: #c6ff91;
-    text-shadow: none;
-}
-
 .clearfix:before,
 .clearfix:after {
     content: " ";

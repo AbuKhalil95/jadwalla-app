@@ -5,7 +5,7 @@ import React from 'react';
 function Footer() {
   return (
     <>
-      <footer class="page-footer font-large cyan darken-3 unique-color-dark">
+      <footer class="page-footer font-large cyan darken-3 unique-color-dark navbar navbar-default navbar-static-bottom navbar-fixed-bottom">
         <div class="container">
           <div class="row">
             <div class="col-md-12 py-3">
