@@ -5,7 +5,7 @@ const MyChat = props => {
     const [socket, setSocket] = useState(socketClient);
     useEffect(() => {
         socket.close();
-        setSocket(socketClient('http://localhost:3001/chatRoom'));
+        setSocket(socketClient('https://jadwalla.herokuapp.com/chatRoom'));
         return () => {
             socket.close();
         };

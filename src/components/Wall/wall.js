@@ -7,7 +7,7 @@ const Wall = props => {
     const [socket, setSocket] = useState(socketClient);
     useEffect(() => {
         socket.close();
-        setSocket(socketClient('http://localhost:3001/wall'));
+        setSocket(socketClient('https://jadwalla.herokuapp.com/wall'));
         return () => {
             socket.close();
         };
