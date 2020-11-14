@@ -2,7 +2,7 @@ import './home.css';
 
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { getHistory } from '../../store/history.js';
 import { getTemplates } from '../../store/allTemplates.js'
 import { getDash } from '../../store/dashboard';
@@ -12,7 +12,7 @@ import Session from '../Session/Session.js';
 import Profile from '../profile/profile.js';
 import Heatmap from '../profile/heatmap.js';
 import PastSessions from '../Session/historySessions.js';
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import Divider from '@material-ui/core/Divider';
 
 const Home = props => {
@@ -26,12 +26,12 @@ const Home = props => {
     props.getDash();
     props.getSessions();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.auth, props.history.name])
 
   return (
     <div className="ctcfH" >
-      <div id='start' className='backgroundImage'/>
+      <div id='start' className='backgroundImage' />
       <Card className="card-formH">
         <div className='homeGrid'>
           <div className='sectionGrid'>
@@ -40,21 +40,21 @@ const Home = props => {
               <Divider dark />
             </div>
             <div className='profile'>
-              <Profile/>
+              <Profile />
             </div>
             <div className='heatmap'>
               <Divider dark />
-              <Heatmap/>
+              <Heatmap />
             </div>
             <div className='session'>
-              <Session/>
+              <Session />
             </div>
             <div className='allSession'>
-              <PastSessions/>
+              <PastSessions />
             </div>
             {/* <div className='blankSpace'>
             </div> */}
-          </div>  
+          </div>
         </div>
       </Card>
     </div>

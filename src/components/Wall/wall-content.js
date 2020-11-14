@@ -15,11 +15,10 @@ const Content = props => {
     }, []);
     return (
         <>
+            <Row className=" justify-content-md-center mb-5 text-light bg-dark h5" style={{ padding: '20px', height: '70px' }}>
+                <span>Write on your friend wall </span>
+            </Row>
             <Container >
-
-                <Row className=" justify-content-md-center mb-5 text-light bg-dark h5" style={{ padding: '20px', height: '70px' }}>
-                    <span>Write on your friend wall</span>
-                </Row>
                 <Row className=" justify-content-md-center " >
                     {
                         isSent ? <Alert variant="success">Your post have been successfully sent</Alert> :

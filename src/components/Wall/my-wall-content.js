@@ -15,11 +15,11 @@ const Content = props => {
     const { posts, newPosts, activateTyping, sharedUrl, postsSpinning } = postsGetter(props.socket);
     return (
         <>
-            <Container style={myWallStyle}   >
-                <Row className=" justify-content-md-center text-light bg-dark h5" style={{ padding: '20px', height: '70px' }}>
-                    {postsSpinning ? <Spinner animation="border" /> : null} <span>My Wall</span>
+            <Row className=" justify-content-md-center mb-5 text-light bg-dark h5" style={{ padding: '20px', height: '70px' }}>
+                {postsSpinning ? <Spinner animation="border" /> : null} <span>My Wall</span>
 
-                </Row>
+            </Row>
+            <Container style={myWallStyle}   >
                 <Row className="justify-content-md-center mt-3" style={{ textAlign: 'center' }}>
                     <Card style={{ width: '18rem' }} >
                         <Card.Header>Share the link with your <Badge variant="primary">Friends</Badge></Card.Header>

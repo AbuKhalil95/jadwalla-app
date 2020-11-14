@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -17,10 +17,10 @@ const Chat = props => {
   return (
     <>
       {redirect && <Redirect to={'/mychat?room=' + subject} />}
+      <Row className=" justify-content-md-center mb-5 text-light bg-dark h5" style={{ padding: '20px', height: '70px' }}>
+        <span>Chat </span>
+      </Row>
       <Container >
-        <Row className=" justify-content-md-center mb-5 text-light bg-dark h5" style={{ padding: '20px', height: '70px' }}>
-          <span>Chat </span>
-        </Row>
         <Row className="d-flex justify-content-center " >
           <Card style={{ width: '20rem' }} >
             <Card.Header>Pick a subject to enter a chatting room</Card.Header>
